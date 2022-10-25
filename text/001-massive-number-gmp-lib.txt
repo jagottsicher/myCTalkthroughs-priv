@@ -1,0 +1,394 @@
+Welcome to myCTalktroughs. This videos, which I will 
+talk you through, are short bites presenting features of 
+the C programming language. Short here means as short as 
+possible, but as long as necessary to understand the main 
+concept presented. This is not a or tik-tok video for 
+which you need the attention span of a housefly.
+
+Today we will have a look at a feature, which at first 
+glance even your smartphone covers, but do not be confused 
+by the prefix "smart" here. Your mobile as any other 
+computer is particularly good at one thing only: 
+Efficiently adding up numbers.
+
+But when it comes to exceptionally large numbers, like the 
+number of sand grains on the world's beaches, the amount 
+of stars in the galaxy, or average level of stupidity of 
+drivers on the highway in front of my wife's car (as she 
+says), the standard library in C often gets us nowhere.
+
+Unlike real numbers, integers are stored in binary as-is: 
+The bits are read and values set. The only limit on an 
+integer’s value is on the number of bits in the binary 
+chunk — the bit width — which sets the value’s range, 
+positive and negative or just positive.
+
+For most computer systems nowadays, the largest integer 
+value is based on a "word size" of 64 bits. In C, this 
+size is data type long or long long. The values range from 
+-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. 
+The unsigned value is large enough that the scientific E 
+notation is required but here I just say: 2^64-1
+
+Until the 128-bit era dawns for PCs and Linux boxes, the 
+unsigned long long is as big as you’re going to see for 
+normal integer values in C — or on any computer system. 
+First I thought this could be a good demo:
+
+#include <stdio.h>
+
+int main()
+{
+    unsigned long long i = 0;
+
+    while(i++)
+        printf("%llu\n",i);
+
+    return(0);
+}
+
+But as you see my compiler seems to optimizing my output 
+away, does the calculation before it is send to Stdout or 
+something, so I do some little change here:
+
+#include <stdio.h>
+
+int main()
+{
+    unsigned long long i = 0;
+
+    while(1) {
+        printf("%llu\n",i);
+    	i++;
+    }
+    return(0);
+}
+
+The program now outputs values from 1 through 
+18,446,744,073,709,551,614. As you can imagine, it takes 
+quite a while to run, mostly because the screen output is 
+slow. Better we give up running the code here. Best guess 
+is it would take over a week for the program to finish. 
+When output is suppressed, however, the program runs in 
+0.002 seconds! That’s how long it takes a computer to 
+count from one through 2^64-1 - at least in some way.
+
+Though imagine how much longer it would take such a program 
+to run if the upper limit of an integer were the full 128 
+width! Or maybe 256 width? Or an infinite number of bytes?
+
+Well, you don’t need to imagine. That’s because the GMP 
+library exists. It extends the C programming language’s 
+capabilities to deal with integers of nearly infinite 
+size.
+
+In this series I did not want to cover C programming 
+beyond the standard library, but promise given, promises 
+broken, and according to my personal life motto: "What do 
+I care about my babbling from yesterday?" I do exactly 
+that here in the first episode. It is necessary and we 
+have to add a new library to your compiler: the GMP 
+Library.
+
+The full name is the GNU Multiple Precision Arithmetic 
+Library. For people who love acronyms it should be called 
+GNUMPAL, or? But that sounds more like a dwarf hero in the 
+"Lord of the rings" than a programming library.
+
+Nevermind, GMP is more catchy anyway. The GMP library may 
+be pre-installed on your computer, though probably not. 
+You must use the Linux package manager coming with your 
+favorite Linux flavour to obtain and install the library. 
+This step adds the required header files and libraries; 
+after that you can play around with massive integer 
+values.
+
+On my Linux here - I am on an debian derivate - to install 
+the libgmp-dev package I use the command:
+
+sudo apt-get install libgmp-dev
+
+On the Mac, you can use the Homebrew program to obtain the 
+package. The command is
+
+brew install gmp
+
+To confirm that the package is installed, we run the 
+following code:
+
+#include <stdio.h>
+#include <gmp.h>
+ 
+int main()
+{
+    printf("GMP version: %d\n",__GNU_MP_RELEASE);
+    return(0);
+} 
+
+The program’s output reflects the GMP library version 
+number, which can vary depending on the package.
+
+For me here it shows:
+
+GMP version: 60201
+
+Upon success (meaning the compiler "sees" the gmp.h header 
+file), you can confirm that the GMP library is installed 
+on your system. Compiling code that uses the library’s 
+functions requires that you use the -lgmp switch when 
+compiling.
+
+So if you're working at the large hadron collider at CERN 
+and you sneaked out of the room to watch this video after 
+messing up your code for an experiment with the particle 
+accelerator, the option -lgmp needs to be added last at 
+the command prompt if you run your compiler manually.
+
+As you see I use Code::Blocks here as an IDE and I just 
+link against gmp with adding -lgmp here in the additional 
+linker options. In your IDE, you must configure the 
+compiler to add the -lgmp switch or otherwise link the GMP 
+library as part of the build procedure.
+
+After confirming that the library is installed the next 
+step isn’t to code, but rather to check through the online 
+documentation, the API or Application Programming 
+Interface. For the GMP library, which handles painfully 
+large integers, the API or online manual can be found 
+here:
+
+https://gmplib.org/manual/index
+
+Don’t expect any handholding. Programmers write to other 
+programmers. Often they’re so immersed in the topic they 
+forget about people who are just starting out. The pros 
+will not pamper you with nice explanations. But that’s 
+okay; it’s the reason you’re watching this video and we're 
+just having a quick look at the manual here.
+
+https://gmplib.org/manual/Nomenclature-and-Types
+
+The GMP integer values are stored as structures cast as 
+the mpz_t datatype. (I assume the structure’s contents are 
+revealed somewhere on the library’s website, though 
+knowing the details isn’t necessary.) So to use the large 
+integer values, you must follow certain procedures and use 
+the specific functions available in the GMP library.
+
+Due to its composition, the mpz_t datatype requires three 
+steps to initialize; you cannot use the equal sign 
+operator to assign a value:
+
+    1. Declare the mpz_t variable.
+    2. Initialize the variable.
+    3. Assign the variable a value.
+
+The declaration is simple:
+
+mpz_t i;
+
+This statement creates an mpz_t variable i. It allocates 
+the structure, but like any variable declared in C, the 
+content is garbage. A second step is required:
+
+mpz_init(i);
+
+The mpz_init() function initializes variable i, setting 
+its value to zero. The variable can now be used in the 
+host of mpz and gmp functions.
+
+To assign a value to the mpz_t variable, you use one of an 
+mpz_set function:
+
+mpz_set_ui(i,1000000000);
+
+The mpz_set_ui() function assigns an unsigned integer (ui) 
+value of one billion to i. The variable can now be used in 
+your code, but only with special functions. For example, 
+gmp_printf() is such a function, shown in this line:
+
+#include <gmp.h>
+
+int main()
+{
+    mpz_t i;
+    mpz_init(i);
+
+    /* i equals one billion */
+    mpz_set_ui(i,1000000000);
+    gmp_printf("%Zd\n",i);
+
+    return(0);
+}
+
+The gmp_printf() function at line 10 works like the 
+standard printf() function, though it’s capable of 
+outputting mpz_t values. The %Zd placeholder outputs an 
+mpz_t value as a decimal number. Here’s a sample run:
+
+1000000000
+
+Wow! That's impressive. 
+
+For the younger generation it may be the information 
+technologies' biggest achievement that you can now watch 
+youtuber watching some other youtuber's video clips 
+playing an online game and comment them. For a programmers 
+though to see such a large integer on the screen can be a 
+disclosure, a revelation, even the beginninig of an 
+epiphany!
+
+But this code is only a start. I sarcastically quote here 
+Eric from Roger Avary's movie "Killing Zoe" from 1993: 
+"Good. Now we do heroin!"
+
+As said earlier, various mpz_set functions are available 
+to assign specific values to mpz_t variables. For example, 
+mpz_set_si() to assign a signed int value; mpz_set_d() to 
+assign a double. You can even convert a value from a 
+string.
+
+The library also hosts functions that read standard input 
+for assigning values, such as gmp_scanf(). The manual 
+lists a lot more. It's on you to find out more.
+
+We will now cover some basic math and carry out some mpz_t 
+value manipulation.
+
+As you now know, you can’t use the equal sign to assign an 
+mpz_t huge integer value, you can’t use the standard 
+arithmetic operators to do math. Nope, you must use 
+special GMP library functions to do the math — big math in 
+this case.
+
+Addition is where math teaching begins, probably because a 
+3-year-old already understands the concept of “more” very 
+quickly. The function here is mpz_add() and has three 
+arguments:
+
+    1. The result
+    2. Value 1
+    3. Value 2
+
+All arguments need to be initialized mpz_t values, which 
+makes this function the equivalent of:
+
+The result = Value 1 + Value 2;
+
+and... here it comes:
+
+2022_10_15-Lesson-a.c
+
+#include <gmp.h>
+
+int main()
+{
+    mpz_t a,b,x;
+
+    /* initialize */
+    mpz_init(a);
+    mpz_init(b);
+    mpz_init(x);
+
+    /* set values */
+    mpz_set_ui(a,3000000000);    /* three billion */
+    mpz_set_ui(b,5000000000);    /* five billion */
+
+    /* add the values */
+    mpz_add(x,a,b);
+    /* output */
+    gmp_printf("%Zd + %Zd = %Zd\n",a,b,x);
+
+    return(0);
+}
+
+Variables a, b, and x are declared at Line 5. These values 
+are initialized at Lines 8 through 10, which sets their 
+values to zero and allows them to be used in further 
+functions. If you attempt to use an uninitialized value, 
+the program, respectively the compiler may barf as the 
+pointers in the mpz_t structure are uninitialized.
+
+On the other hand, your programm may come to some result, 
+but debugging something like that if it is your part in a 
+team project may become so time-consuming that you're the 
+last one who commits and has to merge all the other 
+developer's commits. So better care about initializing 
+your gmp values properly from the start!
+
+Values for variables a and b are assigned at lines 13 and 
+14.
+
+The math - and some people call it the magic - happens at 
+Line 17 with the mpz_add() function. Values a and b are 
+added, with the result stored in variable x. Line 19 uses 
+the gmp_printf() function to output the results:
+
+3000000000 + 5000000000 = 8000000000
+
+Now you know that three billion plus five billion equals 
+eight billion.
+
+(Remember to add the -lgmp switch when compiling at the 
+command line to link the GMP library.)
+
+Of course, with the GMP library you can use much larger 
+values: Feel free to modify the code on your own and wear 
+out the zero key on the keyboard to see how humongous the 
+values get. An if that still does not satisfy you, 
+multiplication is handled by the mpz_addmul() function. 
+Its arguments are the same as for mpz_add(), though the 
+second and third arguments are multiplied and stored in 
+the first argument.
+
+To update the existing code, we add this lines before the 
+return statement to show something:
+
+    /* multiply */
+    mpz_addmul(x,a,b);
+    /* output */
+    gmp_printf("%Zd * %Zd = %Zd\n",a,b,x);
+
+The mpz_addmul() function performs multiplication, storing 
+the result in re-used variable x. ("Always recycle! Think 
+about our planet!". The gmp_printf() statement outputs the 
+result.
+
+We run it again, which also includes outputting the result 
+from adding up values before:
+
+3000000000 + 5000000000 = 8000000000
+3000000000 * 5000000000 = 15000000008000000000
+
+Well, three billion times five billion is equal to 15 
+quintillion, but what the ... and here you have to add as 
+many Rick Sanchez-like curses punctuated by burps as you 
+like to match your astonishment! I hope you spied the 
+digit 8 in the result.
+
+This value is a left over from the first calculation, 
+stored in variable x. Take your fingers out of your ears 
+and note: Unlike standard integer data types, you must 
+always initialize an mpz_t variable before it’s used. In 
+this code, variable x — already assigned the value eight 
+billion — is re-used. Therefore the bits in the value are 
+not reset for the new calculation.
+
+To fix the problem, we must add an mpz_init() function 
+before the mpz_addmul() function:
+
+mpz_init(x);
+
+And you can exhale again after holding your breath in 
+suspense! Once re-initialized (to zero), the output is 
+correct now:
+
+3000000000 + 5000000000 = 8000000000
+3000000000 * 5000000000 = 15000000000000000000
+
+You can explore the rest of the math functions on your 
+own, as they’re referenced in the online manual (API) as 
+shown earlier. Have fun with enormous large, epic massive 
+integers.
+
+
