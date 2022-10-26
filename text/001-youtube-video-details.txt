@@ -1,0 +1,16 @@
+Title 100
+myCTalkthroughs: How to handle really large numbers in the C Programming language? Meet the gmp library!
+
+Description 5000
+If it comes to really large numbers in programming you are usually limited to numbers as large as 18,446,744,073,709,551,614. And if a number that massive does not match your needs you will quickly come to the gmp library: the GNU Multiple Precision Arithmetic Library. So when you have to deal with numbers like the number of sand grains on the world's beaches, the amount of stars in the galaxy, or average level of stupidity of drivers on the highway in front of my wife's car (as she says), the standard library in C often gets us nowhere.
+
+In this video you will learn the basics how to open the world of numbers with the GMP library where Size really matters!
+
+Thumbnail mit coolem Bild!
+Size matters! 
+How to handle really large numbers in the C Programming language? Meet the gmp library!
+
+Tags comma separated 500
+myctalkthroughs, my c talk through, programming, c programming, coding, large, big, huge, enormous, numbers, integers, gmp library, GNU Multiple Precision Arithmetic Library, header, gmp.h, mpz_t, bits, bytes
+
+Category Education
