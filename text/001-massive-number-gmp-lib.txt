@@ -1,8 +1,29 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Welcome to myCTalktroughs. This videos, which I will 
-talk you through, are short bites presenting features of 
+talk you through, are small bites presenting features of
 the C programming language. Short here means as short as 
 possible, but as long as necessary to understand the main 
-concept presented. This is not a or tik-tok video for 
+concepts presented. This is not a or tik-tok video for
 which you need the attention span of a housefly.
 
 Today we will have a look at a feature, which at first 
@@ -35,6 +56,8 @@ unsigned long long is as big as you’re going to see for
 normal integer values in C — or on any computer system. 
 First I thought this could be a good demo:
 
+SUPER-2
+
 #include <stdio.h>
 
 int main()
@@ -49,7 +72,7 @@ int main()
 
 But as you see my compiler seems to optimizing my output 
 away, does the calculation before it is send to Stdout or 
-something, so I do some little change here:
+something, so I need to make some little changes here:
 
 #include <stdio.h>
 
@@ -68,7 +91,7 @@ The program now outputs values from 1 through
 18,446,744,073,709,551,614. As you can imagine, it takes 
 quite a while to run, mostly because the screen output is 
 slow. Better we give up running the code here. Best guess 
-is it would take over a week for the program to finish. 
+is it would take a week or more for the program to finish.
 When output is suppressed, however, the program runs in 
 0.002 seconds! That’s how long it takes a computer to 
 count from one through 2^64-1 - at least in some way.
@@ -77,7 +100,7 @@ Though imagine how much longer it would take such a program
 to run if the upper limit of an integer were the full 128 
 width! Or maybe 256 width? Or an infinite number of bytes?
 
-Well, you don’t need to imagine. That’s because the GMP 
+Well, you don’t need to imagine. That is because the GMP
 library exists. It extends the C programming language’s 
 capabilities to deal with integers of nearly infinite 
 size.
@@ -245,7 +268,7 @@ Eric from Roger Avary's movie "Killing Zoe" from 1993:
 As said earlier, various mpz_set functions are available 
 to assign specific values to mpz_t variables. For example, 
 mpz_set_si() to assign a signed int value; mpz_set_d() to 
-assign a double. You can even convert a value from a 
+assign a double. You can even convert a value from a
 string.
 
 The library also hosts functions that read standard input 
@@ -390,5 +413,18 @@ You can explore the rest of the math functions on your
 own, as they’re referenced in the online manual (API) as 
 shown earlier. Have fun with enormous large, epic massive 
 integers.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Welcome to myCTalktroughs. This videos, which I will 
+talk you through, are small bites presenting features of
+the C programming language. Short here means as short as 
+possible, but as long as necessary to understand the main 
+concepts presented. This is not a or tik-tok video for
+which you need the attention span of a housefly.
+
+Pointers and in C pointer arithmentric are the real problem, not the idea about pointers
+
+What are pointers?
+Simple example.
+
+Real world analogy as a postbox and content. and a content which point to another postbox.
+
+Here we go about a similar example about memory.
+
+So, what is the syntax for that?
+
+int x = 23;
+To integer with the identifier x assign 23 as a value.
+
+int * ptr_x = &x;
+To the pointer to an integer with identifier ptr_x assign the place in memory where the x is located.
+
+The asterisk here belongs to the type, not to the identifier or the value. It indicates that we're creating not an integer value but we want to create something pointing to an integer value. it is something like an name card.
+
+And that asterisk is reused in the case we want to use that name card to find the address of someone.
+
+z = *ptr_x;
+Here the asterisk is used with any kind of type around. The meaning changes to something called dereferencing the value. One could say:
+to the integer with identifier z assign the value which is stored at the spot where ptr_x points to.
+
+
+Example here are usuall lists, but we take something else.
+
+Use case for pointers, die nach ihrem Nutzen von Pointern in C unterschieden werden können. Die Nutzen sind im allgemeinen, um auf einen bestimmten Speicherbereich zu zeigen und den Werte dort zu lesen oder schreiben, und im Besonderen in C (und seinen enegen Verwandten c++ und c#, um Pointer arithemtic anzuwenden.
+
+Zwei sehr häufig anzutreffende Fälle:
+1. Value mutation "out of scope", for example in a function. Hier geht's um die eigentlich Funktion als Zeiger.
+2. Iteration durch Speicherbereiche, zum Beispiel den Fall eines "string", der in C ein Array von Characaters definiert ist. Dann geht es um die Funktion zur Iteration über zusammengesetzte datentypen.
+
+Beipsiel 1:
+Werte außerhalb des Scopes ändern. Zwei Vorteile: Problem des Scopes wird umgangen, zweites, ist ein Pointer deutlich kleiner als ein großer Datentyp. Es wird also deutlich weniger Speicher umhergeschoben.
+
+Beispiel 2:
+Pointer arithemtic: machen wir mal was mit Strings.
+
+Beispiel 3: etwas off-tpoic, aber fällt unter, was sonst noch geht.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
