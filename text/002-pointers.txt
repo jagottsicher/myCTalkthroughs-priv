@@ -15,11 +15,11 @@
 
 
 
+Pointers ...
+Well pointers -- in the C programming language ...
+You may not be ready for them. 
 
-
-But pointers ... maybe you're not ready for them. 
-
-But welcome to myCTalktroughs. Today I will talk you through pointer in under thirty minutes - hopefully. 
+But anyway I will talk you through pointers in under thirty minutes. I'll try at least. Welcome to myCTalktroughs. 
 
 But as I claimed in the headline that I am going to reveal "Everything you always wanted to know about pointers* *but were afraid to ask" I need to to hurry myself some. And when I say myself I mean you!
 
