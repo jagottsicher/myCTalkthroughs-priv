@@ -19,19 +19,38 @@
 
 
 
-Welcome to myCTalktroughs. This videos, which I will 
-talk you through, are small bites presenting features of
-the C programming language. Short here means as short as 
-possible, but as long as necessary to understand the main 
+Welcome to myCTalktroughs. Today I will talk you through pointer in under thirty minutes - hopefully.
+
+But as I claimed to reveal 
+
+
+
 concepts presented. This is not a or tik-tok video for
 which you need the attention span of a housefly.
 
 
 I. 
-What are pointers
+What are pointers?
+IT's simple.
+
+II. 
+What are pointers used for?
+The simple use case, scope and mutation of values.
+
+III.
+What is pointer arithmetics then?
+We saw already, but here the explanantion shown at an example of a composite type (struct) and to.
+another thing is creating lists by using pointers only.
+
+IV.
+Pointers used in strings (as strings are not a distinct type in C)
+Let's check a use case for pointer arithmetics
+
+V. 
+And what else is going on with Pointers?
+Some more crazy idea, but to have a look into the rabiit hole.
 
 
-V. And what else is going on with Pointers?
 
 Pointers and in C pointer arithmentric are the real problem, not the idea about pointers
 
