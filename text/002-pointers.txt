@@ -11,19 +11,23 @@
 
 
 
+[Intro] Jingle
+[Quote] Jingle
 
-
-
+[Video Pointer] Pointer/
+3 Secs
 
 Pointers ...
-Well pointers -- in the C programming language ...
+Well, pointers ... in the C programming language ...
 You may not be ready for them. 
 
-But anyway I will talk you through pointers in under thirty minutes. I'll try at least. Welcome to myCTalktroughs. 
+But dispite the fact the video clip before has nothing to do with them, for some programmers they're a confusing concept when confronted with the first time. Anyway I will talk you through pointers in under thirty minutes. I'll try at least. Welcome to myCTalktroughs. 
 
-But as I claimed in the headline that I am going to reveal "Everything you always wanted to know about pointers* *but were afraid to ask" I need to to hurry myself some. And when I say myself I mean you!
+As I claimed in the title above this video I am going to reveal "Everything you always wanted to know about pointers* *but were afraid to ask" I need to to hurry myself some. And when I say myself I mean you!
 
-There are five big questions to answer
+So rabadabadingdong, here we go! 
+
+There are five big questions to answer:
 
 I. 
 What are pointers?
