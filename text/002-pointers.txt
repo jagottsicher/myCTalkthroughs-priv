@@ -107,14 +107,37 @@ In C a string is defined as an array of characters which is terminated by a spec
 
 So "Hello, world" is in the reality of your computer's memory an array of H e l l o,  w o r l d and eventually \0. Backslash zero does not mean twio characters in C. the preceding backslash only indicates that the zero shall be not interpreted as a value, but as "end of the string". 
 
-And here pointers come into play. All characters are in a row, right. So no need to keep all the letters in mind. You only need to remember the spot the first character of your string resides and then your skip over the array char by char, because you know how much space a char needs. An if you match a "\0" then you know here the string ends, the array may continue though.
+And here pointers come into play. All characters are in a row, right. So no need to keep all the letters in mind. You only need to remember the spot the first character of your string resides and then your skip over the array char by char, because you know how much space a char needs. An if you match a "\0" then you know here the string ends, the array may continue though. and that is exactly what a string is defined in C: A pointer which points to address of some memory storing the beginning of an array of consecutive stored characters.
 
-and that leads us directly to pointer arithmetic.
+And that leads us directly to pointer arithmetic.
 
-Number is the question: 
-What is pointer arithmetics
+Question Number four is: 
+What is pointer arithmetics?
 
+we know already that it is possible to pass a pointer value only instead of passing all the vlaues stored around. so we spare all that copying, finding new space, reserving new memory, storing the data, manipulation the data, copying the data again, freeing the memory and pasting the data at a desired spot. 
+With that capability you can now create arbitraty chunks of memory and create lists over which single parts you can easily directly access - as long you now the width of the single involved data types. And with that you can then create so called linked lists which you can quickly search in or iterate over. and you can links structures even foreward and backwards and create double-linked lists and so forth. And for all that you can use pointer erithmetics. And I promised you before to explain that to you. 
 
+And I redeem this promise with a simple example of iteration over a string. 
+
+example "Hello, World"
+in memory "Hello, world\0"
+
+if accesses as an array:
+string[0] should be 'H', but we get a Value only, which needs to interpreted.
+
+printf("%c\n", string[0])
+
+OR
+
+With a pointers we can point to the first element of the string.
+
+Pointer to H. 
+
+ptr_c++ means the pointer will move to the right (in reality it moves to the left but let's not get confused by details now.)
+
+so again ++ and then we can also go 4 units farer with +4. If you add something to the pointer you do not assign a new value to the memory at that spot. you skip forward a few units with your pointer. and you can even go out of scope by -y and +x. That is pointer arithmetic. And if you shrug your shoulder now let me tell you it is awesome! Due to the fact you don't need to read or write anything when moving pointers is really really fast! If you manage pointers you can nearly access anything in low to no time in your computer. And that makes pointers a very mighty tool and essential for system programming and time critical appilcations. 
+
+but it comes with a trade-off. it is fast, but you really need not only to organize your memory from the beginning, claim it, initialize it, use it, and free it later if you handle the access with pointers you need to know every little piece and pointer arthmetics has no limits and not security nets. If you run out of scope with your pointers you easily create a mess. in best case your application will not work, in worst case you access memory of the system, other applications or even create bad bad damage in running processes.
 
 Let's check a use case for pointer arithmetics
 
