@@ -38,14 +38,14 @@ What are pointers used for?
 The simple use case, scope and mutation of values.
 
 III.
-What is pointer arithmetics then?
-We saw already, but here the explanantion shown at an example of a composite type (struct) and to.
-Another thing is creating lists by using pointers only.
-
-IV.
 What have pointers to do with strings?
 (as strings are not a distinct type in C)
 Let's check a use case for pointer arithmetics
+
+IV.
+What is pointer arithmetics then?
+We saw already, but here the explanantion shown at an example of a composite type (struct) and to.
+Another thing is creating lists by using pointers only.
 
 V. 
 And what else is going on with Pointers?
@@ -57,22 +57,21 @@ Number one:
 What are pointers and why there is a need for them? 
 First of all: don't worry pointersin C are not that complicated to understand. the hard part is pointer arithmetic. But later about that.
 
-Together idea and the need of pointers come with your memory. well, not your memory, but the one in your computer. Imagine your computer's memory as some little boxes. maybe not so much like post boxes, but like like po boxes you can rent and let your post be sent to. This boxes are usually available in some store or post office, can have different sizes, but usually are arranged in a sequential order. And to identify them they are just numbered.  
+Together idea and the need of pointers come with your memory. Well, not your memory, but the one in your computer. Imagine your computer's memory as some little boxes. maybe not so much like post boxes, but like like po boxes you can rent and let your post be sent to. This boxes are usually available in some store or post office, can have different sizes, but usually are arranged in a sequential order. And to identify them they are just numbered consecutively. No rocket science so far.
 
+And pretty much the same your RAM is organized. 
 
+And let's say you have a value you want your computer to remember (like this little thing here) you check the size and put it somewhere. better to say your computer puts it somewhere. And to find it again, the computer remembers where that value is stored. and that is this number here. 
 
+So, what is the syntax for that in C?
 
-Real world analogy as a postbox and content. and a content which point to another postbox.
-
-Here we go about a similar example about memory.
-
-So, what is the syntax for that?
-
+// To integer with the identifier x assign 23 as a value
 int x = 23;
-To integer with the identifier x assign 23 as a value.
 
+That has already something, but not much about pointers. Pointer is a agreement that you can not only stored the value in some box, you can also store the number as a value. 
+
+// To the pointer to an integer with identifier ptr_x assign the place in memory where the x is located.
 int * ptr_x = &x;
-To the pointer to an integer with identifier ptr_x assign the place in memory where the x is located.
 
 The asterisk here belongs to the type, not to the identifier or the value. It indicates that we're creating not an integer value but we want to create something pointing to an integer value. it is something like an name card.
 
@@ -82,8 +81,42 @@ z = *ptr_x;
 Here the asterisk is used with any kind of type around. The meaning changes to something called dereferencing the value. One could say:
 to the integer with identifier z assign the value which is stored at the spot where ptr_x points to.
 
+So first puzzle solved: A Pointer is a value which indicates where some value of distinct type is stored.
 
-Example here are usuall lists, but we take something else.
+
+We come to question number two: What are pointers good for?
+
+One thing they are very good for also has to do with your memory. Memory you can roughly differ between the so called stack and the heap. Greatly simplified the stack is used by any instruction your computer executes to work from and due to it's proper order it is very fast to work from and on the stack. But it has also disadvantages and one is that you need to know at compile time what to put there to make use of it. Also the size is limited and if you want dynamically allocate memory - and in C you as a programmer are fully responsable for both allocating and freeing memory - you quickly come into trouble. But there's a solution for that and that is the heap. I like to imagine that as a heap of boxes and that boxes are also numbered but what you're looking for when allocating memory is a chunk of sequential ordered boxes which are all empty and large enough to place your values in. 
+
+The only thing you need to know now is where you want to start writing your values and for that you can use a pointer.
+
+but a far more essential justification for the existence of pointers is the mutation of values "out of scope", for example in a function. Here it is about the actual function as pointer.
+
+Example und Anwendungsbeispiel
+
+You can do so much more with pointers and especially system programmers juggle pointers like artists at a fun fair.
+
+But there is another very obvious application for pointers and I'll show it to you right here:
+
+Question number 3 
+What have pointers to do with strings?
+I have bad news for you: Strings are not a distinct type in the C programming language. 
+
+So what is a string then? 
+In C a string is defined as an array of characters which is terminated by a specific control character.
+
+So "Hello, world" is in the reality of your computer's memory an array of H e l l o,  w o r l d and eventually \0. Backslash zero does not mean twio characters in C. the preceding backslash only indicates that the zero shall be not interpreted as a value, but as "end of the string". 
+
+And here pointers come into play. All characters are in a row, right. So no need to keep all the letters in mind. You only need to remember the spot the first character of your string resides and then your skip over the array char by char, because you know how much space a char needs. An if you match a "\0" then you know here the string ends, the array may continue though.
+
+and that leads us directly to pointer arithmetic.
+
+Number is the question: 
+What is pointer arithmetics
+
+
+
+Let's check a use case for pointer arithmetics
 
 Use case for pointers, die nach ihrem Nutzen von Pointern in C unterschieden werden können. Die Nutzen sind im allgemeinen, um auf einen bestimmten Speicherbereich zu zeigen und den Werte dort zu lesen oder schreiben, und im Besonderen in C (und seinen enegen Verwandten c++ und c#, um Pointer arithemtic anzuwenden.
 
