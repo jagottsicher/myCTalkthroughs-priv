@@ -21,17 +21,17 @@ Pointers ...
 Well, pointers ... in the C programming language ...
 You may not be ready for them. 
 
-But dispite the fact the video clip before has nothing to do with them, for some programmers they're a confusing concept when confronted with the first time. Anyway I will talk you through pointers in under thirty minutes. I'll try at least. Welcome to myCTalktroughs. 
+But despite the fact the video clip before has not much to do with pointers, for some programming beginners they're a sustainable source of coonfusion when facing them the first time. Anyway, I will talk you through pointers in under thirty minutes. I'll try at least. Welcome to myCTalktroughs. 
 
-As I claimed in the title above this video I am going to reveal "Everything you always wanted to know about pointers* *but were afraid to ask" I need to to hurry myself some. And when I say myself I mean you!
+So, Pointers, as I claimed in the title above in this video I am going to reveal "Everything you always wanted to know about pointers* *but were afraid to ask". For that I need to to hurry myself some -- and when I say myself I mean you!
 
 Wubba Lubba Dub Dub, here we go! 
 
 There are five big questions to answer:
 
 I. 
-What are pointers?
-IT's simple.
+What are pointers? which also answers why they exist at all.
+IT's simple. 
 
 II. 
 What are pointers used for?
@@ -40,10 +40,10 @@ The simple use case, scope and mutation of values.
 III.
 What is pointer arithmetics then?
 We saw already, but here the explanantion shown at an example of a composite type (struct) and to.
-another thing is creating lists by using pointers only.
+Another thing is creating lists by using pointers only.
 
 IV.
-What have ointers to do with strings?
+What have pointers to do with strings?
 (as strings are not a distinct type in C)
 Let's check a use case for pointer arithmetics
 
@@ -51,12 +51,16 @@ V.
 And what else is going on with Pointers?
 totally useless but hard to wrap your head around example, but let's put the whole head in the rabbit hole here!
 
+After that, you should be ready to be released into the wild of pointers and survive at least for a respectable while.
+
+Number one:
+What are pointers and why there is a need for them? 
+First of all: don't worry pointersin C are not that complicated to understand. the hard part is pointer arithmetic. But later about that.
+
+Together idea and the need of pointers come with your memory. well, not your memory, but the one in your computer. Imagine your computer's memory as some little boxes. maybe not so much like post boxes, but like like po boxes you can rent and let your post be sent to. This boxes are usually available in some store or post office, can have different sizes, but usually are arranged in a sequential order. And to identify them they are just numbered.  
 
 
-Pointers and in C pointer arithmentric are the real problem, not the idea about pointers
 
-What are pointers?
-Simple example.
 
 Real world analogy as a postbox and content. and a content which point to another postbox.
 
