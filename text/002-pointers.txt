@@ -25,7 +25,7 @@ But dispite the fact the video clip before has nothing to do with them, for some
 
 As I claimed in the title above this video I am going to reveal "Everything you always wanted to know about pointers* *but were afraid to ask" I need to to hurry myself some. And when I say myself I mean you!
 
-So rabadabadingdong, here we go! 
+Wubba Lubba Dub Dub, here we go! 
 
 There are five big questions to answer:
 
