@@ -21,13 +21,9 @@
 
 Welcome to myCTalktroughs. Today I will talk you through pointer in under thirty minutes - hopefully.
 
-But as I claimed to reveal 
+But as I claimed in the headline that I am going to reveal "Everything you always wanted to know about pointers* *but were afraid to ask" I need to to hurry myself some. And when I say myself I mean you!
 
-
-
-concepts presented. This is not a or tik-tok video for
-which you need the attention span of a housefly.
-
+There are five big questions to answer
 
 I. 
 What are pointers?
@@ -43,12 +39,13 @@ We saw already, but here the explanantion shown at an example of a composite typ
 another thing is creating lists by using pointers only.
 
 IV.
-Pointers used in strings (as strings are not a distinct type in C)
+What have ointers to do with strings?
+(as strings are not a distinct type in C)
 Let's check a use case for pointer arithmetics
 
 V. 
 And what else is going on with Pointers?
-Some more crazy idea, but to have a look into the rabiit hole.
+totally useless but hard to wrap your head around example, but let's put the whole head in the rabbit hole here!
 
 
 
