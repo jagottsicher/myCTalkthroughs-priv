@@ -26,6 +26,13 @@ possible, but as long as necessary to understand the main
 concepts presented. This is not a or tik-tok video for
 which you need the attention span of a housefly.
 
+
+I. 
+What are pointers
+
+
+V. And what else is going on with Pointers?
+
 Pointers and in C pointer arithmentric are the real problem, not the idea about pointers
 
 What are pointers?
