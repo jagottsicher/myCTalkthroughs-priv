@@ -139,6 +139,23 @@ so again ++ and then we can also go 4 units farer with +4. If you add something 
 
 but it comes with a trade-off. it is fast, but you really need not only to organize your memory from the beginning, claim it, initialize it, use it, and free it later if you handle the access with pointers you need to know every little piece and pointer arthmetics has no limits and not security nets. If you run out of scope with your pointers you easily create a mess. in best case your application will not work, in worst case you access memory of the system, other applications or even create bad bad damage in running processes.
 
+Even before Peter Parker you should have been aware great power comes with great responsibility.
+
+That makes the last question here: 
+What else one can do with pointers?
+
+Besides als the Joker-like destructive tendencies which come to mind now with pointer you can do all kinds of crazy stuff. And that is a curse as well as a gift. to do the real hard stuff you need to be a by far better coder than I am one. So I stick here to something kind of easy, but stunning example to show you how the pointeres work as pointer to specific types to access chunks of your memory.
+
+That is because pointers are nothing else but addresses and a pointer is always related to y tyxpe to inform your programm "how far to read or write data" from the pointer. 
+
+
+
+
+
+
+
+
+
 Let's check a use case for pointer arithmetics
 
 Use case for pointers, die nach ihrem Nutzen von Pointern in C unterschieden werden können. Die Nutzen sind im allgemeinen, um auf einen bestimmten Speicherbereich zu zeigen und den Werte dort zu lesen oder schreiben, und im Besonderen in C (und seinen enegen Verwandten c++ und c#, um Pointer arithemtic anzuwenden.
