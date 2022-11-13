@@ -1,0 +1,4 @@
+2022-10-22 19-29-27_480p.mp4
+https://stackoverflow.com/questions/51360136/ffmpeg-not-splitting-into-exact-same-length-chunks
+
+ffmpeg -i '2022-10-22 19-29-27_480p.mp4' -c copy -map 0 -segment_time 00:23:66 -f segment -reset_timestamps 1 output%03d.mp4

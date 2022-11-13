@@ -19,84 +19,115 @@
 
 Pointers ...
 Well, pointers ... in the C programming language ...
-You may not be ready for them. 
+You are not ready for them.
 
-But despite the fact the video clip before has not much to do with pointers, for some programming beginners they're a sustainable source of coonfusion when facing them the first time. Anyway, I will talk you through pointers in under thirty minutes. I'll try at least. Welcome to myCTalktroughs. 
+But despite the fact the video clip before has not much to do with pointers, for some programming beginners they're a sustainable source of confusion when facing them the first time. Nevertheless, I will talk you through pointers in under thirty minutes. I'll try at least. Welcome to myCTalktroughs.
 
-So, Pointers, as I claimed in the title above in this video I am going to reveal "Everything you always wanted to know about pointers* *but were afraid to ask". For that I need to to hurry myself some -- and when I say myself I mean you!
+So, pointers is the topic. As I claim in the title of this video I am going to reveal "Everything you always wanted to know about pointers in the C programming language* *but were afraid to ask". For that I need to incite myself -- and when I say myself I mean you!
 
 Wubba Lubba Dub Dub, here we go! 
+
+[SWITCH TO PRESENTATION]
 
 There are five big questions to answer:
 
 I. 
-What are pointers? which also answers why they exist at all.
-IT's simple. 
+What are pointers?
 
 II. 
 What are pointers used for?
-The simple use case, scope and mutation of values.
 
 III.
 What have pointers to do with strings?
-(as strings are not a distinct type in C)
-Let's check a use case for pointer arithmetics
 
 IV.
 What is pointer arithmetics then?
-We saw already, but here the explanantion shown at an example of a composite type (struct) and to.
-Another thing is creating lists by using pointers only.
 
 V. 
 And what else is going on with Pointers?
-totally useless but hard to wrap your head around example, but let's put the whole head in the rabbit hole here!
 
-After that, you should be ready to be released into the wild of pointers and survive at least for a respectable while.
+Basically useless example but hard to wrap your head around. but it's worth to put the whole head in the rabbit hole here!
+
+After getting answers to that questions you should be ready to be released into the wild of pointers and survive at least for a respectable while.
+
+
+I.
 
 Number one:
 What are pointers and why there is a need for them? 
-First of all: don't worry pointersin C are not that complicated to understand. the hard part is pointer arithmetic. But later about that.
+First of all: Don't panic! Pointers itself in C are not that complicated to understand. The hard part is pointer arithmetic. But later more about that.
 
-Together idea and the need of pointers come with your memory. Well, not your memory, but the one in your computer. Imagine your computer's memory as some little boxes. maybe not so much like post boxes, but like like po boxes you can rent and let your post be sent to. This boxes are usually available in some store or post office, can have different sizes, but usually are arranged in a sequential order. And to identify them they are just numbered consecutively. No rocket science so far.
+The idea and the need of pointers within your computer come with your memory. Well, not your memory, but the one in your computer.
 
-And pretty much the same your RAM is organized. 
+Imagine your computer's memory as mail boxes, but not this ones, mor like
 
-And let's say you have a value you want your computer to remember (like this little thing here) you check the size and put it somewhere. better to say your computer puts it somewhere. And to find it again, the computer remembers where that value is stored. and that is this number here. 
+po boxes you can rent and let your mail be sent to. This boxes are usually available in some store or post office, can have different sizes, but usually are they are numbered and arranged in sequential order.
+
+And of course you can store information in such boxes. You see such po boxes have a lot in common with the RAM of your computer.
+
+Unfortunately renting a lot of po boxes somehow exceeded my budget for this video. Here comes the cheapskate version:
+Little boxes. And to identify them I just numbered mit hexadecimal numbers. No rocket science so far.
+
+And that is pretty much the same your RAM is organized.
+
+And let's say you have a value you want your computer to remember (like this little thing here) you check the size and put it somewhere. better to say your computer puts it somewhere. And to find it again, the computer remembers where that value is stored. And that is this number here.
+
+VIDEO DESCRIPTIION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 So, what is the syntax for that in C?
 
-// To integer with the identifier x assign 23 as a value
+// To a type integer with the identifier x assign 23 as a value
 int x = 23;
 
-That has already something, but not much about pointers. Pointer is a agreement that you can not only stored the value in some box, you can also store the number as a value. 
+That has already something, but not much about pointers. Pointers are an agreement that you can not only store the value in some box, you can also store that number where you stored something as a value.
 
-// To the pointer to an integer with identifier ptr_x assign the place in memory where the x is located.
+// To a type pointer to an integer with identifier ptr_x assign the place in memory where the x is located.
 int * ptr_x = &x;
 
-The asterisk here belongs to the type, not to the identifier or the value. It indicates that we're creating not an integer value but we want to create something pointing to an integer value. it is something like an name card.
+The asterisk here belongs to the type, not to the identifier or the value. It indicates that we're creating not an integer value but we want to create something pointing to an integer value. So the pointer variable is doing what the name of the type suggests: It points somewhere where an integer is stored.
 
-And that asterisk is reused in the case we want to use that name card to find the address of someone.
+
+In some way it is like a name card with an address on it. And that asterisk is reused in the case we want to use that name card to find the address of someone.
 
 z = *ptr_x;
-Here the asterisk is used with any kind of type around. The meaning changes to something called dereferencing the value. One could say:
-to the integer with identifier z assign the value which is stored at the spot where ptr_x points to.
+Here the asterisk is used without any kind of type around. The meaning changes to something called dereferencing the value. One could say:
+// to the integer with identifier z assign the value which is stored at the spot where ptr_x points to.
 
-So first puzzle solved: A Pointer is a value which indicates where some value of distinct type is stored.
+So first puzzle solved: A Pointer is a value which indicates where some value of distinct type is stored in your computer's memory.
 
+
+II.
 
 We come to question number two: What are pointers good for?
 
-One thing they are very good for also has to do with your memory. Memory you can roughly differ between the so called stack and the heap. Greatly simplified the stack is used by any instruction your computer executes to work from and due to it's proper order it is very fast to work from and on the stack. But it has also disadvantages and one is that you need to know at compile time what to put there to make use of it. Also the size is limited and if you want dynamically allocate memory - and in C you as a programmer are fully responsable for both allocating and freeing memory - you quickly come into trouble. But there's a solution for that and that is the heap. I like to imagine that as a heap of boxes and that boxes are also numbered but what you're looking for when allocating memory is a chunk of sequential ordered boxes which are all empty and large enough to place your values in. 
+One thing they are very good for also has to do with your memory. Memory you can roughly differ between the so called stack and the heap. Greatly simplified the stack is used by any instruction your computer executes to work from and due to it's proper order it is very fast to work from and on the stack. But it has also disadvantages and one is that you need to know at compile time what to put there to make use of access speed. Also the size is limited and if you want to allocate memory dynamically - and in C you as a programmer are fully responsable for both allocating and freeing memory - you quickly come into trouble. But there's a solution for that and that is the heap. I like to imagine that as a heap of boxes and that boxes are also numbered but what you're looking for when allocating memory is a chunk of sequential ordered boxes which are all empty and large enough to place your values in.
 
-The only thing you need to know now is where you want to start writing your values and for that you can use a pointer.
+And if you have such a red line leading you from box to box the only thing you need to know is where you want to start writing your values and for that you can use a pointer. That is a big use case already. Dynamic memory allocation and organisation.
 
-but a far more essential justification for the existence of pointers is the mutation of values "out of scope", for example in a function. Here it is about the actual function as pointer.
+But a by far more essential justification for the existence of pointers is the mutation of values "out of scope", for example in a function. Here it is about the actual function as pointer.
 
 Example und Anwendungsbeispiel
 
 You can do so much more with pointers and especially system programmers juggle pointers like artists at a fun fair.
 
-But there is another very obvious application for pointers and I'll show it to you right here:
+But there is another very obvious application for pointers and I'll show it to you right now:
+
+
+III.
 
 Question number 3 
 What have pointers to do with strings?
@@ -105,11 +136,16 @@ I have bad news for you: Strings are not a distinct type in the C programming la
 So what is a string then? 
 In C a string is defined as an array of characters which is terminated by a specific control character.
 
-So "Hello, world" is in the reality of your computer's memory an array of H e l l o,  w o r l d and eventually \0. Backslash zero does not mean twio characters in C. the preceding backslash only indicates that the zero shall be not interpreted as a value, but as "end of the string". 
+So "Hello, world" is in the reality of your computer's memory an array of H e l l o,  w o r l d and eventually \0. Backslash zero does not mean two characters in C. The preceding backslash only indicates that the following character, in this case the zero, shall be not interpreted as a value, but as "end of the string". This is called an escaped character.
 
-And here pointers come into play. All characters are in a row, right. So no need to keep all the letters in mind. You only need to remember the spot the first character of your string resides and then your skip over the array char by char, because you know how much space a char needs. An if you match a "\0" then you know here the string ends, the array may continue though. and that is exactly what a string is defined in C: A pointer which points to address of some memory storing the beginning of an array of consecutive stored characters.
+And here pointers come into play. All characters in a string are in a row, right? They are literally threaded like pearl on a , well on a string. So no need to keep all the letters in mind. You only need to remember the spot the first character of your string resides and then your skip over the array char by char, because you know how much space a single char needs. And if you match a "\0" then you know here the string ends, the array may continue though but we don't need to care now. And that is exactly what a string is defined in C in the the hood: A pointer which points to an address of some memory storing the beginning of an array of consecutive stored characters.
+
+Example of Strings as Char[]
 
 And that leads us directly to pointer arithmetic.
+
+
+IV.
 
 Question Number four is: 
 What is pointer arithmetics?
@@ -137,16 +173,34 @@ ptr_c++ means the pointer will move to the right (in reality it moves to the lef
 
 so again ++ and then we can also go 4 units farer with +4. If you add something to the pointer you do not assign a new value to the memory at that spot. you skip forward a few units with your pointer. and you can even go out of scope by -y and +x. That is pointer arithmetic. And if you shrug your shoulder now let me tell you it is awesome! Due to the fact you don't need to read or write anything when moving pointers is really really fast! If you manage pointers you can nearly access anything in low to no time in your computer. And that makes pointers a very mighty tool and essential for system programming and time critical appilcations. 
 
-but it comes with a trade-off. it is fast, but you really need not only to organize your memory from the beginning, claim it, initialize it, use it, and free it later if you handle the access with pointers you need to know every little piece and pointer arthmetics has no limits and not security nets. If you run out of scope with your pointers you easily create a mess. in best case your application will not work, in worst case you access memory of the system, other applications or even create bad bad damage in running processes.
+But this power comes with a drawback. UIsing pointers help for fast execution times, but you really need not only to organize your memory from the beginning, claim it, initialize it, use it, and free it later if you handle the access with pointers you need to know every little piece and pointer arthmetics comes with no limits and no security nets. If you run out of scope with your pointers you easily create a mess. In best case your application will not work, in worst case you access memory of the system, other applications or even create bad bad damage in running processes.
 
-Even before Peter Parker you should have been aware great power comes with great responsibility.
+Even before Peter Parker you should have been aware of the saying "with great power comes with great responsibility.
+
+
+V.
 
 That makes the last question here: 
 What else one can do with pointers?
 
-Besides als the Joker-like destructive tendencies which come to mind now with pointer you can do all kinds of crazy stuff. And that is a curse as well as a gift. to do the real hard stuff you need to be a by far better coder than I am one. So I stick here to something kind of easy, but stunning example to show you how the pointeres work as pointer to specific types to access chunks of your memory.
+Besides all the Joaquin Phoenix Joker-like destructive tendencies which come to mind now with pointer you can do all kinds of crazy stuff. They are a gift, and they are a curse. But more they are a gift. To do the real tough stuff you need to be a by far better coder than I am one. So I stick here to something kind of easy, but stunning example to show you how the pointers work as pointer to specific types to access chunks of your memory in an usual way.
 
-That is because pointers are nothing else but addresses and a pointer is always related to y tyxpe to inform your programm "how far to read or write data" from the pointer. 
+That is because pointers are nothing else but variables to addresses and a pointer is always related to distict type which informs your programm "how far to read or write data" from the spot your pointer points to.
+
+Here comes an example which includes all kinds of weird usage of pointers, types, values, pointer arithemtic
+
+(EXAMPLE)
+
+And for what all that? Short answer is: Just because.
+
+The better answer is that it shows how you can make use of pointers to manipulate memory directly and that for C, and hence for your computer, the meaning of any arrangement of zeros and ones depends on interpretation.
+
+Many people think programming is about complex calculations or weird algorithms but that's not true. It is all about types. And pointers are a tool to access and interpret values as of any type because they represet something like an extension to a type. They are a tool to throw off the earthly bonds and look into the face of an entity of higher consciousness and obtain a big piece of the cake of transcendence.
+
+My advice is to embrace pointers in the C programming language.
+
+
+
 
 
 
