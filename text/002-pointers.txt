@@ -65,30 +65,36 @@ po boxes you can rent and let your mail be sent to. This boxes are usually avail
 
 And of course you can store information in such boxes. You see such po boxes have a lot in common with the RAM of your computer.
 
-Unfortunately renting a lot of po boxes somehow exceeded my budget for this video. Here comes the cheapskate version:
-Little boxes. And to identify them I just numbered mit hexadecimal numbers. No rocket science so far.
+Unfortunately renting a lot of po boxes somehow exceeded my budget for this video. Here comes the cheapskate version with modest means I had at my disposal:
 
-And that is pretty much the same your RAM is organized.
+[VIDEO START]
 
-And let's say you have a value you want your computer to remember (like this little thing here) you check the size and put it somewhere. better to say your computer puts it somewhere. And to find it again, the computer remembers where that value is stored. And that is this number here.
+Match boxes, which serve a an analogue to RAM. And to identify space in memory I just numbered them with hexadecimal numbers. No rocket science so far.
 
-VIDEO DESCRIPTIION
+That is pretty much the same how your RAM is organized.
 
+And now let's say you have some values you want your computer to remember (like this little thing here) you check the available size and put it somewhere. Better to say your computer puts it somewhere. For example here we store some numeric values.
 
+But if you want to store some type which does not fit in, you cannot store it here. Values of type Letter are simply to big here. To store our value X we need a bigger chunk of memory. Here from hex 08 to hex 0B is enough space to store our X.
 
+That's nice, but in some way our data is some lost now and the spot where we wanted to store it in the first place is empty.
 
-
-
-
-
-
+And here comes the trick: Instead of storing the whole data at hex o3 we prepare us a pointer. The pointer is a value of type pointer to a letter and is nothing else but the the address in memory where X is stored. Not the data itself. From the value of a pointer you know where to find it, from the underlying type information you know the size of the value you are looking for.
 
 
+So if you want to pass the value x around you just need to handle over the pointer to find the value. You just check the pointer value and see that our letter X is stored at hex 08. Here you can get it out and even manipulate it in place. That is called "by reference".
+
+Well, how does that look express in code?
 
 
 
 
-So, what is the syntax for that in C?
+
+
+
+
+
+
 
 // To a type integer with the identifier x assign 23 as a value
 int x = 23;
