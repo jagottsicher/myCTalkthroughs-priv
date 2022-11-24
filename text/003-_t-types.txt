@@ -1,0 +1,110 @@
+
+
+
+
+You may not have recognized them so far.
+But they are out there. 
+in the code.
+somewhere hidden.
+waiting.
+
+in the C programming language ...
+_t data types seem to be everywhere.
+
+
+
+
+
+
+
+And the fact they are so omnipresent in C source code makes them a perfect topic to talk about. And with that welcome to MyCTalkthrough!
+
+If you start writing code with the C programming language they may catch your attention when you have a look at some libraries: Identifiers with a trailing _t like time_t, size_t, and other kinds of _t data types, usually specific to some function or library. The C gurus have a method to their madness when it comes to naming those kind of things. The _t stands for something. And that's very consistent on purpose.
+
+And it has to do with ... yah, it has to do with distinction. The distinction from in the C programming language's built-in or let's call them basic types to something else...
+
+Let's have a look at the in C available basic types:
+
+char 	for characters  which also includes strings as arrays of type character
+int 	for integers, so whole numbers
+float 	as a type for floting point number, and 
+double	as a float with higher precision on the right side of the decimal dot.
+
+And for that basic types we have qualifiers which can be applied to the basic types like short, long, signed, unsigned. I guess you already know that this means you can apply a qualifiers like unsigned to a basic data type like let's say int and - in that example - let the mostleft bit make the value not be interpreted as a negative number but uses it just to extend the range into the positive. 
+
+Nevertheless data types like void and _Bool are available, the four basic ones plus a few of the qualifiers are used only in case one creates  his own type with _t.
+
+The crucial questions are: Is there a secret in that? is it a conspirancy about _t? And most of it all: Why bother and who cares? 
+
+The reason  for the usage of _t identifiers for data types is compatibility and consistency between architectures. And that is something nearly every C programmer should keep an eye on. So the whole thing is not so much about system programming, but with the C programming language itself, because it is used for practically every operation system available to today and the interoperability among severeal on C dependent operation systems makes nearly all C code appear like "written once, used often".
+
+So, does that naming types with _t have something to do with compiling? The answer is surprisingliy: No, not at all. Compiler don't care about _t notations.
+
+_t naming can feel much more sure about its meaning then we as humans do. It does not need philosphers nor Douglas Adams to ask and answer the ultimate question about life, the universe, and everything. The answer which justifies their existence is as simple as reasonable:
+
+To add trailing _t to the identifier of a data type implies a type definition with the keyword typedef, hence a defined data type. The typedef is based on an already existing type. Boom, microphone drop! "Hey , that thing was expernsive!" 
+
+So easy programming can be. _t is a human convention, but it is important to remember this convention when hacking in your code on the keyboard. For example it is a cranc idea to let an identifier of one of your functions end on _t. That will for sure lead to confusion.
+
+At least the same important is that on POSIX related systems many to all _t data types are reserved. If you use your own _t data types (with typedef) you should do only so if you know what you're doing and if it is intended to work with that reserved types. A useful workaround in the case that you - as a run-of-the-mill programmer - want to prepare your own data types with typedef and you want to distinct your identifiers for your own data types from those of variables you can use a different name convention like a trailing _type for example.
+
+Side notes to be aware of:
+All identifiers ending with _t are reserved for future additional types.
+The whole int32_t family of types was added in the C99 standard, so they used the reserved names to avoid conflict with already existing software.
+You can find an overview of reserved names in the glibc documentation. http://www.gnu.org/software/libc/manual/html_node/Reserved-Names.html
+
+So, let's take time.h as an example here:
+https://en.wikibooks.org/wiki/C_Programming/time.h
+https://en.wikibooks.org/wiki/C_Programming/time.h/time_t
+
+[EXAMPLE]
+
+[OPEN time.h, SEARCH time_t]
+
+See the double underscore here. If you ever asked yourself, why you stumble over such a naming, please note the underscores here are used to distinguish names reserved for the implementation of this concrete function or library from names that users' source code which implements this library can use. Users can do #define FOO 1 but they must not do #define __FOO__ 1 and therefore the implementation is free to use the name __FOO__ for its own macros, variables, functions etc. Rule of thumb is Don't name your identifiers with preceding underscores unless you exactly know what you're doing!
+
+Back to our time_t.
+
+Not matter how a library or operating system measures the time, in C you use the time_t data type to declare a time value. Years ago, this value may have been a 16-bit integer. Then it became a 32-bit integer to deal with the Y2K problem.
+
+[See also: https://en.wikipedia.org/wiki/Year_2000_problem ]
+
+For Y36/Y38 problem, it might be a 64-bit integer on some systems. Still, no matter what the underlying mechanics is, your code compiles and provides you the option to use the time_t data type when dealing with time values. And the _t part only give you a clue: "Hey, That's a data type made with typedef and it's for me to the used. Thanks for that!"
+
+The question of the underlying type does play a role when using a placeholder though.
+
+For example, the sizeof() operator returns a size_t value – essentially a number of bytes. Often I used the %d placeholder to output a size_t value until my compiler GCC started to remind me:
+
+warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]|
+	printf("\"buf\" is of %d bytes in size\n", sizeof(buf));
+                             ~~                  ^~~~~~~~~~~~~
+                             %lu
+1 warning generated.
+
+Years ago, the %d placeholder worked totally fine! But the underlying format is unsigned long now, and gcc (and I guess so does clang) is nice enough to show me where I used an outdated placeholder, which argument is referenced, and which conversion characters to use. It’s all too often that I rely upon compiler warnings like this to discover which placeholder to use - at least for me the compiler always knows better.
+
+Oh, by the way, the %zu placeholder can always be used to output a size_t value, whether it’s changed in the future or not.
+
+When you don’t know the underlying data type for a _t typedef, you can go hanging out some time in the header files to meet the specific definition. Sometimes you might be lucky and find the typedef immediately in the header file. With modern libraries, however, the typedef is most likely included in another header file, often in a subdirectory. Finding it may be a time consuming operation.
+
+Remember for example, time_t we found in the bits/types/time_t.h. But that file was included in the #include <bits/time.h> header file, where its definition is related to defined constants in even other header files. On other distrobutions, with other organisation of the sources code and headers, or with other C compilers, or other operations systems, or even C variants and versions, it may be different. Argll - it's hard to dig yourself through sometimes. So, if I wasn't afraid of an army of lawyers eating me alive for breakfast I would sing a few lines of the Beatles' song "Let it be!". No, it’s best to just use typedef names as intended and stick to the words of Tony Soprano: "Period. End of Discussion."
+
+What you learned in this video is that in the C programming language a _t hanging to an identifier indicates that this is an identifier for a data type which was set up with typedef and is available after including a header file.
+
+And as a last takeaway also from this episode of myCTalkthroughs:
+If you face an _t type and the man page does not explain which placeholder to use, remember you can best-guess it and wait your old friend the compiler spitting out a warning which reveals the right type to use. This approach may be the short run some frustrating, but it works.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

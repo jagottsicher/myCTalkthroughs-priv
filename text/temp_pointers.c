@@ -10,20 +10,20 @@ int main()
 // myCTalkthrough
 //
 //    char 	dec		bin
-//    m			109		01101101
-//    y			121		01111001
-//    C			 67		01000011
-//    T			 84		01010100
-//    a			 97		01100001
-//    l			108		01101100
-//    k			107		01101011
-//    t			116		01110100
-//    h			104		01101000
-//    r			114		01110010
-//    o			111		01101111
-//    u			117		01110101
-//    g			103		01100111
-//    h			104		01101000
+//    m		109		01101101
+//    y		121		01111001
+//    C		 67		01000011
+//    T		 84		01010100
+//    a		 97		01100001
+//    l		108		01101100
+//    k		107		01101011
+//    t		116		01110100
+//    h		104		01101000
+//    r		114		01110010
+//    o		111		01101111
+//    u		117		01110101
+//    g		103		01100111
+//    h		104		01101000
 //
 // 		1 byte	 1 byte		an int = 4 byte = 32 bit 				 an int = 4 byte = 32 bit					an int = 4 byte = 32 bit
 //    01101000 01100111 01110101011011110111001001101000 01110100011010110110110001100001 01010100010000110111100101101101
@@ -43,12 +43,12 @@ int main()
 		    ptr_int++;
 		    *ptr_int = right;
 
-		    ptr_char = ptr_char + 12;
-		    *ptr_char = restToTheRight;
-		    restToTheRight++;
-		    ptr_char++;
-		    *ptr_char = restToTheRight;
-		    x[14] = '\0';
+ptr_char = ptr_char + 12;
+*ptr_char = restToTheRight;
+restToTheRight++;
+ptr_char++;
+*ptr_char = restToTheRight;
+x[14] = '\0';
 
     printf("%s\n",x);
 
@@ -75,7 +75,7 @@ int main()
     char * ptr_x = &x;
 
     printf("%x\n",ptr_x);
-		printf("%c\n",*ptr_x);
+    printf("%c\n",*ptr_x);
 		ptr_x++;
 		printf("%c\n",*ptr_x);
 		ptr_x = ptr_x + 10;
@@ -96,7 +96,7 @@ int main()
 #include <stdio.h>
 #include <stdlib.h>
 
-void alterTheValue(int x);
+void alterTheValue(int a);
 void alterTheValueByRef(int * ptr_b);
 
 int main()
@@ -155,8 +155,6 @@ int main()
     int y = *ptr_x;
 
     printf("%i\n", y);
-
-
 
     return 0;
 }

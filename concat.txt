@@ -1,5 +1,8 @@
-file '/home/jens/Bilder/myCTalkthroughs-priv/001_2022-10-28 12-19-29_C-massive-numbers-gmp.mp4'
-file '/home/jens/Bilder/myCTalkthroughs-priv/2022-10-28_11-23-26_youtube-addon.mp4'
-
-
-
+file '/home/jens/Bilder/myCTalkthroughs-priv/2022-11-18_13-49-00.mp4'
+file '/home/jens/Bilder/myCTalkthroughs-priv/2022-11-18_14-02-37.mp4'
+file '/home/jens/Bilder/myCTalkthroughs-priv/2022-11-18_14-13-07.mp4' 
+file '/home/jens/Bilder/myCTalkthroughs-priv/2022-11-18_14-38-32.mp4' 
+file '/home/jens/Bilder/myCTalkthroughs-priv/2022-11-18_14-49-52.mp4' 
+file '/home/jens/Bilder/myCTalkthroughs-priv/2022-11-18_15-12-58.mp4'
+file '/home/jens/Bilder/myCTalkthroughs-priv/2022-11-18_16-11-00.mp4' 
+file '/home/jens/Bilder/myCTalkthroughs-priv/2022-11-18_16-25-54.mp4'

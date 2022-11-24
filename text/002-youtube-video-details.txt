@@ -1,5 +1,5 @@
 Title 100
-myCTalkthroughs: Everything you always wanted to know about pointers*
+[SOLVED] What the heck is up with these _t datatypes in C? Is there a conspiracy behind it?
 
 
 Description 5000
@@ -13,7 +13,7 @@ And if you liked this episode please give it a thumbs up, if you want to see mor
 
 https://gmplib.org/manual/index
 
-P.S.: If you're interested to learn programming basic in Google's programming language Go feel free to have a look at my course on Udemy; https://www.udemy.com/course/learn-programming-in-go-golang-a-rich-guide-for-beginners/?referralCode=484136908AFF6CF0CA83 of stars in the galaxy, or average level of stupidity of drivers on the highway in front of my wife's car (as she says), the standard library in C often gets us nowhere.
+P.S.: If you're interested to learn programming basic in Google's programming language Go feel free to have a look at my course on Udemy; https://www.udemy.com/course/learn-programming-in-go-golang-a-rich-guide-for-beginners/?referralCode=484136908AFF6CF0CA83 
 
 
 Thumbnail mit coolem Bild!
