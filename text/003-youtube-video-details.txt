@@ -2,14 +2,16 @@ Title 100
 [SOLVED] What the heck is up with those _t data types in C? Is there a conspiracy behind it?
 
 Description 5000
-Description text
+If you start writing code with the C programming language they may catch your attention when you have a look at some libraries: Identifiers with a trailing _t like time_t, size_t, and other kinds of _t data types, usually specific to some function or library. The C gurus have a method to their madness when it comes to naming those kind of things. _t is not an exception , it stands for something. And that's very consistent on purpose.
+
+And it has to do with ... yah, it has to do with distinction. The distinction from in the C programming language's built-in or let's call them basic types to something else...
 
 https://stackoverflow.com/questions/231760/what-does-a-type-followed-by-t-underscore-t-represent
 http://www.gnu.org/software/libc/manual/html_node/Reserved-Names.html
 https://en.wikibooks.org/wiki/C_Programming/time.h
 https://en.wikibooks.org/wiki/C_Programming/time.h/time_t
 https://en.wikipedia.org/wiki/Year_2000_problem
-
+https://en.wikipedia.org/wiki/Year_2038_problem
 
 P.S.: If you're interested to learn programming basic in Google's programming language Go feel free to have a look at my course on Udemy; https://www.udemy.com/course/learn-programming-in-go-golang-a-rich-guide-for-beginners/?referralCode=484136908AFF6CF0CA83 of stars in the galaxy, or average level of stupidity of drivers on the highway in front of my wife's car (as she says), the standard library in C often gets us nowhere.
 
@@ -18,6 +20,6 @@ Thumbnail mit coolem Bild!
 [SOLVED] What the heck is up with those _t data types in C? Is there a conspiracy behind it?
 
 Tags comma separated 500
-myctalkthroughs, my c talk through, programming, c programming, coding, _t, system programming
+myctalkthroughs, my c talk through, programming, c programming, coding, _t, time_t, size_t, system programming
 
 Category Education

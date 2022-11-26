@@ -16,6 +16,7 @@ int main(void)
     now = time(NULL);
     // printf("\"Now\" is: %u\n", now);
     // printf("\"Now\" is: %ld\n", now);
+    // printf("\"Now\" is: %zu\n", now);
 
     /* Format and print the time, "ddd yyyy-mm-dd hh:mm:ss zzz" */
     /* convert the seconds since the unix epoch (pointed to by a timer)

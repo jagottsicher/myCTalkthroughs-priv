@@ -1,0 +1,21 @@
+Title 100
+The weird world of C programming. Welcome to mental insanity!
+
+Description 5000
+You've just taken your first tentative steps in the strange realm of the C programming language and have already acquired something that has a lot in common with self-confidence, then there's already some strangeness lurking around the next corner. But if you familiarize yourself with such encounters, they quickly can become a new tool for everyday life. And some of that weirdness we talk about today. Welcome to myCTalkthroughs.
+
+Recently I was tinkering with a small tutorial program that was supposed to explain the quicksort algorithm when I encountered one of these oddities -- strange, odd, weird, kind of bizarre at a first glance.
+
+https://stackoverflow.com/LINK TO CODE ON GITHUB
+
+
+P.S.: If you're interested to learn programming basic in Google's programming language Go feel free to have a look at my course on Udemy; https://www.udemy.com/course/learn-programming-in-go-golang-a-rich-guide-for-beginners/?referralCode=484136908AFF6CF0CA83 of stars in the galaxy, or average level of stupidity of drivers on the highway in front of my wife's car (as she says), the standard library in C often gets us nowhere.
+
+
+Thumbnail mit coolem Bild!
+TITEL
+
+Tags comma separated 500
+myctalkthroughs, my c talk through, programming, c programming, C, coding, functions, pointers, functions as arguments, quicksort, qsort
+
+Category Education
