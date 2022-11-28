@@ -1,0 +1,22 @@
+Title 100
+Format strings in the C programming language: Learn to manipulate the seemingly immutable!
+
+Description 5000
+You don't need to be a politician, a lobbyist, a spin doctor or a Marvel superhero if you want to manipulate what seems to be immutable like laws, taxes, basic economy rules, opinions, reality. 
+
+The C language holds the potential of doing utterly terrifying things though, which is something you should embrace, celebrate and make use of every day. Many beginners as well as by other programming languages spoiled coders consider a lot of the C language's concepts as absolute when, in fact, they are not. Therefore I present you a little trick as one of the strange, beautiful, and frightening things you can do in the C programming language, which feels like a super power. And with that welcome to myCTalkthroughs.
+
+As you probably already know, the printf() function features a variable number of arguments. The first one is always the format string, which is followed by a number of arguments equal to the number of placeholders within the format string. The compiler lets you know when you get the numbers wrong, and also if the data types do not match or are used in the wrong way.
+
+https://github.com/jagottsicher/myCTalkthroughs/blob/main/005-manipulating-format-strings.c
+
+P.S.: If you're interested to learn programming basic in Google's programming language Go feel free to have a look at my course on Udemy; https://www.udemy.com/course/learn-programming-in-go-golang-a-rich-guide-for-beginners/?referralCode=484136908AFF6CF0CA83 of stars in the galaxy, or average level of stupidity of drivers on the highway in front of my wife's car (as she says), the standard library in C often gets us nowhere.
+
+
+Thumbnail mit coolem Bild!
+TITEL
+
+Tags comma separated 500
+myctalkthroughs, my c talk through, programming, c programming, C, coding, format string. const string pointer, value in format string
+
+Category Education
