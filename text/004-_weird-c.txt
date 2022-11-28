@@ -8,9 +8,21 @@
 
 
 
-If you've just taken your first tentative steps in the strange realm of the C programming language and have already acquired something that has some in common with self-confidence, then, well, be prepared that there's already some strangeness lurking around the next corner. But if you familiarize yourself with such encounters, they may quickly become a new tool for everyday life. And some of that weirdness we talk about today. Welcome to myCTalkthroughs.
 
-Somehow talking about it now feels like trading your everyday clothes for a straitjacket. Recently, I was tinkering with a small tutorial C program that was supposed to explain the quicksort algorithm when I encountered one of these oddities -- strange, odd, weird, kind of bizarre at a first glance. This here is that simple program demonstrating quicksort:
+
+
+
+
+
+If you've just taken your first tentative steps in the strange realm of the C programming language and have already acquired something which has something in common with self-confidence, then, well, be prepared that there's already the next strangeness lurking around the corner. 
+
+But if you familiarize yourself with such encounters, they may quickly become gifted with a new tool for programmer's everyday life. And of one of that weirdnesses I will talk you through today. Welcome to myCTalkthroughs.
+
+Somehow talking about it feels like trading your everyday clothes for a straitjacket. Recently, I was tinkering with a small tutorial C program that was supposed to explain the quicksort algorithm, I encountered one of these oddities -- strange, odd, weird, kind of bizarre at a first glance. 
+
+[SWITCH 2]
+
+This here is that simple program demonstrating quicksort:
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -55,17 +67,25 @@ int compare(const void *a, const void *b)
 
 [EXPLANATION]
 
-First it fills an array with 100k of random integers, and eventually sorts them. If we run it, as you see, it is unbelieveable fast. That's not surprising. Surprising is the qsort() function’s fourth argument. It is the name of the function that compares the values. Here's the funtion itself, just compare two values, after two pointers to pointers to pointer of int have been handled over. That's not what causes confusion here. Surpring here is how and what exactly is handled over here as an argument. look at this line [NUMBER] here_
+First it fills an array with 100k of random integers, and eventually sorts them. If we run it, as you see, it is unbelieveable fast. That's not surprising. 
+
+
+
+Allow me some side note about random number generation. Imagine random numbers in a computer like a library with an infinite number of books. all these books have an infinite numbers of random numbers in it. if you need a bunch of random numbers now, you can take a book from the shelf and take one after another. 
+
+But in that case every time you run your program you will take exactly the same book from the shelf and therefore get exactly the same random numbers. You need to make sure, that your choice of "random wisdom" is different with every run. And that you can achieve with the function srand(). I provides some one of a kind seed, a number which needs to change with every run of the programm. With srand you make sure, that with every run of your program you take a different random number book from the shelf by handling over time as an argument. So much about random, respectively, pseudo-random numbers in your computers.  
+
+Now back here to the qsort function call [HERE]. Surprising is the qsort() function’s fourth argument. It is the name of the function that compares the values. Here's the funtion itself, just compare two values, after two pointers to pointers to pointer of int have been handled over. That's not what causes confusion here. Surpring here is how and what exactly is handled over here as an argument. Look at line [NUMBER]:
 
 qsort(qarray,SIZE,sizeof(int),compare);
 
 The identifier "compare" is the name of the compare() function, which compares two values. But note: It is the name of a function and NOT a function call and therefore a return value from that function what is handled over as an argument to a qsort. Let that sink in! and from one moment to the next you suddenly find yourself stumbling like Alice in Wonderland deep into the rabbit hole even without any white rabbit hurrying you! 
 
-So what kind of value do we pass over and how does that thing work here? 
+So if mentioning the commpare indetifier is not a function call aiming to get a return value what kind of value do we pass over and how does that thing work here? 
 
 A quote from the Joker impersonated by the unforgettable Heath Ledger is willing to provide a path to a solution: "Madness, as you know, is like gravity. All it takes is a little push."
 
-Let's take that as a prompt to follow up: Like a variable in the C language, a function has an address — a location in memory where the function resides. This shouldn’t be surprising to you. After all, the function has to live somewhere. And, as I know, that location doesn’t change as the program runs.
+Let's take that as a prompt to follow up: Like a variable in the C language, a function has an address — a location in memory where the function resides. This shouldn’t be surprising to you. After all, the function has to live somewhere. And, as I know, that location doesn’t change as the program runs.w
 
 A function’s address is an attribute used as an argument in several C language functions. You may have seen this requirement in some C Library functions already but didn't realise it. And so it does here in our call of quicksort:
 
