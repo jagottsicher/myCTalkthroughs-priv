@@ -1,0 +1,105 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+There’s a scene in the HBO series Silicon Valley that aptly describes a magic number in programming code: Coders are trying to figure out a compression algorithm and they encounter a large integer value. They wonder what it means; it’s not commented or assigned to a clever constant name. It’s just . . . a magic number.
+
+The scene in question is analyzed in this video on YouTube. But my point is that any number appearing in code all by itself can be a magic number: A value without reference anywhere else where another coder must determine exactly what’s going on.
+
+I’m guilty of setting magic numbers in my code, especially when teaching. It’s far easier to write:
+
+for( x=0; x<10; x++ )
+
+I explain how this for loop repeats 10 times, but the number is still magical: the value has no significance, but in a real world program it might. The number could be days, a testing interval, the size of a buffer. Who knows? No one! Because it's a magic number.
+
+To avoid the magic number from frustrating you or anyone else reading your code in the future, you can employ a constant. I'm fond of defined constants, demonstrated in this code:
+2021_09_18-Lesson-a.c
+
+#include <stdio.h>
+
+#define LENGTH 10
+
+int main()
+{
+    char a = 'A';
+    int x;
+
+    for ( x=0; x<LENGTH; x++ )
+        putchar(a++);
+    putchar('\n');
+
+    return(0);
+}
+
+At Line 3, the defined constant LENGTH is declared. Because of its name, the for loop at Line 10 makes sense. Further, because the value is set in a defined constant, changing it at Line 3 changes every other reference in the code.
+
+The preprocessor deals with defined constants, replacing their values throughout the source code file in all functions. Defined constants declared in header files are available in all source code files that include the header. For within only a single function, you can instead use a constant variable.
+
+Yes, "constant variable" is horrible oxymoron.
+
+Besides being local to the function, a constant variable also occupies storage. Further, constants in a function have a data type and storage classifiers.
+
+The following code could use magic number 7, and I would be very tempted to do so, but to avoid a magic number a constant is declared at Line 5:
+2021_09_18-Lesson-b.c
+
+#include <stdio.h>
+
+int main()
+{
+    const signed week = 7;
+    const char *weekday[week] = {
+        "Mon", "Tue", "Wed", "Thu",
+        "Fri", "Sat", "Sun"
+    };
+    int x;
+
+    for ( x=0; x<week; x++ )
+        printf("%4s",weekday[x]);
+    putchar('\n');
+
+    return(0);
+}
+
+I admit that the statement const signed week = 7; seems a bit much. It is! Especially for a tiny program like this. But in a longer program, it can help with documentation and avoid confusion.
+
+The const keyword defines the variable as unchanging. Due to this limitation, the variable must be assigned a value as it's declared, as is shown at Line 5 in the code. The signed keyword ensures that the value is set as an always-positive integer. The week constant is used at Line 6 to set the array size, though this specification isn't necessary with the array containing preset values. Still, the construction is readable. Refer to my earlier blog post regarding signed variables to set array size.
+
+If you shy away from creating constants for values, remember to fully document what a value means in your code. Especially for longer programs, knowing the significance of an immediate value in the code helps debug potential problems in the future.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

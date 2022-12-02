@@ -17,6 +17,6 @@ Thumbnail mit coolem Bild!
 TITEL
 
 Tags comma separated 500
-myctalkthroughs, my c talk through, programming, c programming, C, coding, format string. const string pointer, value in format string
+myctalkthroughs, my c talk through, programming, c programming, C, coding, format string, const string pointer, value in format string
 
 Category Education

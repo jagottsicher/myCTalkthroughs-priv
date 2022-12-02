@@ -14,13 +14,15 @@
 
 
 
-You don't need to be a politician, a lobbyist, a spin doctor or a Marvel superhero if you want to manipulate what seems to be immutable like laws, taxes, basic economy rules, opinions, reality, aaand a printf statements's format string. 
+You don't need to be a politician, a lobbyist, a spin doctor, or a Marvel superhero if you want to manipulate what seems to be immutable like laws, taxes, economy rules, people's prejudices, reality, and the printf() statements's format string. 
 
-The C language holds the potential of doing utterly terrifying things, which is something you should embrace, celebrate, and, if you can, make use of every day. Many beginners as well as by other programming languages spoiled coders consider a lots of the C language's concepts as absolute when, in fact, they are not. Therefore I present you a little trick as one of the strange, beautiful, and frightening things you can do in the C programming language, which feels like a super power. And with that welcome to myCTalkthroughs.
+The C language holds the potential of doing utterly terrifying things, which is something you should -- embrace, celebrate, and, if you can, make use of every single day. 
+
+Many beginners as well as by other programming languages pampered coders consider lots of the C language's concepts as absolute when, in fact, they are not. Therefore I present you a little trick as one of this strange, beautiful, and frightening things you can do in the C programming language, which in the end feels like a super power. And with that welcome to myCTalkthroughs.
 
 [PRINTF DECLARATION]
 
-As you probably already know, the printf() function features a variable number of arguments. The first one is always the format string, which is followed by a number of arguments equal to the number of placeholders within the format string. The compiler lets you know when you get the numbers wrong, and also if data types do not match or are used in an inadequate way.
+As you probably already know, the printf() function -- as here in this example -- features a variable number of arguments. Let's have a look at the declaration. The first one is always a format string, which is followed by a number of arguments -- here represented as dot,dot,dot -- equal to the number of placeholders you can place within the format string. The compiler lets you know when you get the numbers wrong, and also if data types do not match, or are used in an inadequate way.
 
 Here is some sample code that shows a bunch of printf() statements. Each format string uses one placeholder. Each statement has one argument.
 
@@ -40,7 +42,9 @@ int main()
     return(0);
 }
 
-[OUTPUT F9]
+[OUTPUT F9] 
+
+Here is the output, as you see the numbers of digits on the right side of this floating point number is decreasing from line to line.
 
 123.456779
 123.4568
@@ -49,15 +53,20 @@ int main()
 123.5
 123
 
-I’m sure this kind of output is desired by someone, but that’s not the point of this little code snippet.
+I’m sure this kind of output is desired by someone somewhere on this planet, but that’s not the point of this little code snippet.
 
-When you look at the code, you see repetitive statements. Lines 8 through 12 are essentially the same printf() function with the format string changing only. One character in the string goes from 4 down to zero. Some programmers may already raise their fists and chant the slogan: “That calls for a loop!”. More timid and less eexperienced programmers would counter, “No! It’s a format string! You cannot put it into a loop!”. And that is a dogma, which at the first glance seems to be cemented to the ground of the c programming language and the descendants.
+When you look at the code, you see repetitive statements. Lines 8 through 12 are essentially the same printf() function with the format string changing only. One character in the string goes from 4 down to zero. 
 
-Well, you can't make use of a format string in a loop? No idea how you see that, but I hate if someone else but my wife tells me what I can do or not!
+Some programmers may already raise their fists and chant the slogan: “That calls for a loop!”. More timid and less experienced programmers would counter, “No! It’s a format string! You cannot put it into a loop and change a variable within! That's impossible!r”. And that is a dogma, which at the first glance seems to be cemented to the ground of the C programming language and its descendants.
 
-Remember: A format string, after all, is a string. and a string is nothing but an array of characters -- values of the character data type. As all strings also a format strings can be manipulated. The prototype for the printf() function states it must be a constant string, or more precisely a constant character pointer. Could the laws of the C universe be bent and twisted as a Dr Strange does with reality in the Marvel universe (or multiverse?) and that format string be manipulated?
+Well, you can't make use of a format string in a loop? 
+No idea how you see that, but I hate if someone else but my wife tells me what I can or cannot do!
 
-Here’s the answer: 
+Remember: A format string, after all, is a string. And a string is nothing but an array of characters -- values of the character data type. As all strings also a format strings can be manipulated. 
+
+The prototype for the printf() function states clearly that it must be a constant string, or more precisely a constant character pointer. Could the laws of the C universe be bent and twisted as a Dr Strange does with reality in the Marvel universe and that format string be manipulated beforehand?
+
+Here’s comes my approach: 
 
 [COPY, AND EDIT LINE BY LINE]
 
@@ -79,19 +88,23 @@ int main()
     return(0);
 }
 
-The string format is declared at Line 6. It shows a space character where a value should be. In some way  you can consider the space character as a placeholder within a placeholder for now. That value I'd like to see here determines the number of digits to display after the decimal in a floating point number.
+We build us a format string and call it "format" at Line 6. It shows a space character where a value should be. In some way you can consider the space character as a placeholder within a placeholder for now. That value I'd like to see here later determines the number of digits to display after the decimal in a floating point number.
 
 At Line 10, the for loop counts backwards from 4 to 0 (inclusive).
 
-The format string is modified at Line 12. The blank is replaced by the value of variable x. Here it is where the magic takes place. That variable is added to character '0', which generates the characters '4' through '0' as the loop counts down. What is going on here and why this adding a number to an character works can be explained with a look at the ASCII table like this one here.
+On line 12 we modify within the loop our format string. The blank is replaced by the value of variable x. Here it is where the magic takes place. That variable is added to character '0', which generates the characters '4' through '0' as the loop counts down. 
+
+What is going on here and why this adding a number to an character works can be explained with a look at the ASCII table like this one here.
 
 [ASCII] 
 
-You can see that a character is only a representation of an integer. That means that adding a number to or subtracting a number from a character gives you the character which is represeting the result of your calculation. Boom! Does that make sense? If not, don't worry, just accept.  
+You can see that a character is only a representation of an integer. That means that adding a number to or subtracting a number from a character gives you the character which is represeting the result of your calculation. 
+
+Boom! I hope that makes sense for you! 
 
 In line 13, the string format is finally inserted into the printf() statement — the compiler apparently doesn’t worry (at least on my machine if I compile now) — and that string is used by displaying the value of f. [F9]
 
-The code’s output is the same as the before. Of course, this example is kind of silly. Nevertheless my point here is that you can modify the format string in a printf() statement however you want, should the need come up.
+The code’s output is the same as the before. Of course, this example is kind of silly. Nevertheless my point here is that you can modify the format string in a printf() statement however you want, should the need for it come up. One of the features of the C programming language seems to be, that you can drive your coding to whatever extend you want.
 
 
 
