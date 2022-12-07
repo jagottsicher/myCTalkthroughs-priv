@@ -1,0 +1,35 @@
+Intro
+ 
+Zitat:
+It does not matter how slowly you go as long as you do not stop. Confucius
+
+
+[STRG_1 Full Screen ROGER]
+
+The C programming language is already 50 years old, but yet highly topical. [STRG+2] And for sure, it is more important than any hipster who plays guitar in a coffee shop. 
+[STRG+1 OFF BILDSCHIRMAUFNAHME] 
+There are already countless books, courses, lectures, and tutorials both for absolute beginners and for full professionals, but programmers in C, who have left the basic beginner level behind, but have not yet mastered the way to the professional programmer, encounter problems or even just oddities, which are difficult to understand at first and also not easy to research. I try to fill this gap with myCTalkthroughs.
+
+[Screen Jens]
+ 
+On this channel, I take basic concepts of the C programming language in small and easy to digest bites. The channel is especially designed for beginners, but not necessarily for absolute beginners. I want to help you to become familiar with the special characteristics of C. If you have basic knowledge of C or any other programming language already, then you will surely find useful, interesting but also odd things in one or the other lesson, which need a short explanation.
+
+[Video Idiots]
+
+Let's be honest, we watch all kinds of videos on youtube, which illuminate useless trivia, pop culture, and even nonsense from all possible sides, and that's okay, 
+
+[1STRG-1]
+
+but there must be a few minutes now and then to learn something more meaningfull like maybe the C programming language. 
+
+And therefore "hit the subscribe button" and the bell, and let's talk some C through!
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,6 @@
+Casting malloc() in C? What is wrong with you?
 
+Pic: Angry Karen, beide Hände erhoben! 
 
 
 

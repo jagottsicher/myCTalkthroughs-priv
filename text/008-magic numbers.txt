@@ -1,4 +1,6 @@
+Avoid magic numbers -- they the kind of magic you don't want!
 
+Pic: Magician playing card tricks (numbers only)
 
 
 
