@@ -1,0 +1,105 @@
+A brief look at data qualifiers in C: const, restrict, volatile, _Atomic
+
+When describing data, the C language offers data types and data qualifiers. The data types arer0142 well known to any C programmer, defining the kind of data stored: char, int, float, and so on. The qualifier describes additional aspects of the data, such as how it’s used or whether the compiler should optimize the data’s storage.
+
+Here are the data qualifier keywords in the C language:
+
+const
+restrict
+volatile
+_Atomic
+
+These differ from storage class specifiers: auto, register, static, extern, and typedef. In a way, these declarations tell the compiler how to store the data. The data qualifiers tell the compiler how the data is to be treated and offers optiond for optimizations. I know, I know, I can be accused of over-simplification here. If you have a better description you're invited to leave a comment.
+
+The keyword const ensures that the data declared isn’t modified in the code. Its scope is within the function where the declaration is made. Because the constant value can’t be modified, it’s assigned a value in its declaration:
+
+const int full = 100;
+
+As you see, integer full is set to 100 and made constant. This variable is used throughout the function, but never altered. If an attempt is made, the compiler bark terible loud at you.
+
+The const data qualifier differs from the defined constant in scope. The precompiler DEFINE directive creates a constant visible throughout the source code. But a defined constant value is replaced as the program is built. More or less it is not really a constant, right? It is a "search and replace" procedure. On the other hand, a const value is assigned storage in memory like any other variable and used that way throughout the program.
+
+Beyond const, my bet is that only a few C programmers use the restrict, volatile, and _Atomic qualifiers. From my research, these specifiers are (no surprise) quite specific in how they modify data and when their use is necessary.
+
+You find the restrict specifier used in various function declarations in the man pages:
+
+int printf(const char * restrict format, ...);
+char *fgets(char * restrict str, int size, FILE * restrict stream);
+FILE *fopen(const char * restrict path, const char * restrict mode);
+
+In each declaration, see how restrict is associated with a pointer? In a way, think of a restrict specifier as a promise made to the compiler that no other pointer is ever used to access the same data chunk. This restriction (get it?) also implies that each string passed to a function is unique.
+
+The restrict specification is made primarily for compiler optimization. By ensuring that only one pointer references a chunk of data, the compiler is able to reduce overhead when accessing the data. I’m not sure how that works, and so I cannot provide good sample code to show restrict in action, it’s difficult to visually demonstrate how this optimization works or how it’s effective.
+
+Perhaps the most hilarious keyword in the C language is volatile, which is a data type qualifier. But this qualifier doesn’t mean that the data is unstable or risky to use, unlike other things described as “volatile.” It has more to do with the compiler optimizing code than with anything that happens to data once a program is running.
+
+The direction that volatile gives to the compiler is that the data shouldn’t be optimized at all, ever. I mention this specific use in a post from a year ago where I recommended using the volatile keyword to prevent the compiler from optimizing a routine to zero-out memory. And here I cann at least put an example in here.
+
+#include <stdio.h>
+
+void memzero(void *b, int len)
+{
+    volatile int x;
+    char *a;
+
+    a = (char *)b;
+    for( x=0; x<len; x++)
+        *(a+x) = 0;
+}
+
+int main()
+{
+    struct human {
+        char name[32];
+        int age;
+        float weight;
+    } my;
+
+    memzero(&my,sizeof(struct human));
+
+    return(0);
+}
+
+The memzero() function is a re-write of the memset() function in C, which is considered non-secure: If you want to zero a buffer to erase sensitive information, memset() might not do the complete job. The compiler can optimize the function’s guts, in which case memory remains untouched.
+
+In the code, the memzero() function uses the volatile qualifier to ensure that the compiler doesn’t optimize int variable x. Its value isn’t altered as it loops from zero to len, filling buffer b with zero values.
+
+Of course, you can replace the memset() function with memset_s() to avoid optimization; you need not write your own function, but the memzero() function does demonstrate a valid use for the volatile qualifier. As i Know the C23 standard includes the memset_explicit() function that uses the original memset() function’s arguments, but also guarantees no optimization.
+
+The final data qualifier in the list is _Atomic, a keyword introduced with the C11 standard (like a few of the other underscore prefix keywords). This keyword creates an atomic data type that can be accessed by multiple threads in a single program. But that is a story about concuurent code optimization which was too much for this little video. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

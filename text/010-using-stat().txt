@@ -1,0 +1,86 @@
+How to determinate a file's size in C?
+
+Pic: Messen mit MAßband, Zunge raus.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+If you are a carpenter, you often need to measure the material you are working with. If you are a C programmer, you occasionally need to measure the size of a file or determine some other property of a it. As  carpenters use rulers to measure, the right tool to determinate file sizes in C comes with a function.
+
+Ant with that, welcome to myCTalkthroughs.
+
+Well, long story shot, the stat() function provides various yummy treats about a file, including its timestamps, permissions, file type, and besides others the file’s size in bytes. Of course, you don't always want to open the file and iterate over it byte by byte. This approach would not only be clumsy and slow, but in most cases impossible. The file's permoissions could forbid to open it or it could be just much too big to be read completely just to determine the file size. Imagine your self-coded bitcoin wallet wants to access the actual blockchain files, open each, iterate through and over all of them, just to calculate the filesize. the term "epic fail" comes to mind.
+
+As already mentioned, the solution for that kind of problem - at least for non-Windows operating systems, or more precisely any POSIX-compliant operation system, yah, yah, I know microsoft caught up with that in some way - comes in the form of a function called stat() wrapped in a library stat, which is made accessible by including the header file of a <sys/stat.h>.
+
+[STRG-2]
+
+Here is code that uses the stat() function to get and output a file’s size.
+
+#include <stdio.h>
+#include <sys/stat.h>
+
+int main(int argc, char *argv[])
+{
+    char *filename;
+    struct stat fs;
+    int r;
+
+    filename = "010-using-stat.c";
+
+    r = stat(filename, &fs);
+    if( r == -1 )
+        printf("Could not read %s\n", filename);
+    else
+        printf("%s filesize is %lld bytes.\n", filename, fs.st_size);
+
+    return(0);
+}
+
+The stat() function gathers details about the file. If the stat() function returns successfully (the return value r is not -1), the file’s size in bytes is output.
+
+[Sample run]
+
+Let's quickcheck if that value is true. 
+
+[ls -l 010-using-stat.c]
+
+and really the filesize seems to be the right one.
+
+You can examine the stat library on your own by accessing the header file [OPEN] but especially for beginners the lokking at the implementation is by far too abstract. It is rarely necessary to checkout at the source code to use a functions of an included header file. Instead I refer to this website [https://pubs.opengroup.org/onlinepubs/9699919799/], which explains much better how to use stat in your own programs. As you can see, there is a lot more meta data of files available.12
+
+Please note that in the example file on Github you can find a version commented out below the actual version which can be used to build your own command line tool to determinate the size of a file.
+
+As always, you can find the links in the description of the video. Thanks for watching, please give a Thumbs up, hit the subscribe button and the bell. I hope to see you for the next episode of myCTalkthrouhs. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

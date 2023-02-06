@@ -16,14 +16,11 @@ Pic: nice and neat smiling
 
 
 
-My ASCII table program had several iterations. It’s easy to get carried away, but it’s also easy to be too skimpy on the information. This month’s Exercise is based on my current ASCII program, which has evolved over the years.
+If you ever had no internet connection on a train or on a flight you may have missed to have a simple ASCII table at hand. The following one is easy to get carried away, but also not a cheapstaker when it comes to providing different numeric notations. 
 
-Coding this challenge doesn’t require a lot of advanced C programming knowledge. Still, having a handy ASCII table is a necessary thing if you want to confirm code values or explore interesting ASCII tricks.
+Coding this such a table doesn’t require a lot of advanced C programming knowledge. Still, having a handy ASCII table is a necessary thing if you want to confirm code values or explore interesting ASCII tricks. And with that welcome to mycTalksthroughs.
 
-Central to my solution is a for loop, though it goes only from 0 through 32 — one stick of an ASCII table. The loop contains four printf() statements, one for each stick.
-
-The first printf() statement doesn’t output character values directly, as the control codes would foul the display. The second through fourth printf() statements increase the value output by 32 each time: +32, +64, and finally +96.
-2021_08-Exercise.c
+Central to my solution is a for loop, though it goes only from 0 through 31 — one stick of an ASCII table. The loop contains four printf() statements, one for each stick.
 
 #include <stdio.h>
 
@@ -54,8 +51,18 @@ int main()
     return(0);
 }
 
+The first printf() statement doesn’t output character values directly, as the control codes would foul the display. The second through fourth printf() statements increase the value output by 32 each time: +32, +64, and finally +96.
+
 The initial printf() statement at Line 7, which outputs the header row, is split between lines. The backslash character extends the line, wrapping it around to the following line, but without an indent. The indent would become part of the string, which I don’t want. Still, be careful to mind the spaces required between the lines to ensure that the headings line up with the columns.
 
-This source code’s program is named ascii and I keep in my personal bin directory so that I can always summon an ASCII table while I’m working.
+If you produce a simple executable and keep in your personal bin directory you can always summon an ASCII table I’m working.
 
-I hope you concocted a useful ASCII table solution, using whatever methods or approach you deemed best. Remember, multiple solutions are always possible for any programming puzzle.
+For me this is a useful ASCII table solution. Remember, if you prefer your own solutions you are invited to code it at any time according to your personal needs and preferences.
+
+
+
+
+
+
+
+

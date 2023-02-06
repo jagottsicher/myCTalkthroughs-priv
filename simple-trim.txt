@@ -1,6 +1,14 @@
-ffmpeg -ss 00:00:00 -to 00:26:36  -i '/home/jens/Bilder/myCTalkthroughs-priv/2022-11-25_11-35-02.mp4' -c copy '/home/jens/Bilder/myCTalkthroughs-priv/2022-11-25_11-35-02_trimmed.mp4' 
+ffmpeg -ss 00:00:00 -to 00:09:66  -i '/home/jens/Bilder/Learn-Programming-in-Go-golang-Webserver-with-PostgreSQL/2023-01-06_14-47-15.mp4' -c copy '/home/jens/Bilder/Learn-Programming-in-Go-golang-Webserver-with-PostgreSQL/2023-01-06_14-47-15_trimmed.mp4' 
 
 
 
 ffmpeg -ss 00:00:00 -to 00:10:03 -i /home/jens/Bilder/Crashkurs-Workshop-Programmieren-lernen-mit-Go-golang/2022-04-18\ 21-04-02_Lektion-106\ –\ Append\ -\ etwas\ an\ ein\ Slice\ anf\ügen.mp4 -c copy /home/jens/Bilder/Crashkurs-Workshop-Programmieren-lernen-mit-Go-golang/2022-04-18\ 21-04-02_Lektion-106\ –\ Append\ -\ etwas\ an\ ein\ Slice\ anf\ügen_trimmed.mp4
 
+ffmpeg -ss 00:00:00 -to 00:10:03 -i '/home/jens/Bilder/Learn-Programming-in-Go-golang-A-Rich-Guide-for-Beginners/2022-07-08 22-53-47_L021_The keyword var comes with a little secret.mp4' -c 'copy /home/jens/Bilder/Learn-Programming-in-Go-golang-A-Rich-Guide-for-Beginners/2022-07-08 22-53-47_L021_The keyword var comes with a little secret_trimmed.mp4'
+
+
+
+
+
+/home/jens/Bilder/Learn-Programming-in-Go-golang-Webserver-with-PostgreSQL/2023-01-06_14-47-15.mp4
+/home/jens/Bilder/Learn-Programming-in-Go-golang-A-Rich-Guide-for-Beginners/2022-07-08 22-53-47_L021_The keyword var comes with a little secret.mp4

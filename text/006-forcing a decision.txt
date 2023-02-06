@@ -19,20 +19,21 @@ Pic: Uncle sam like: We want you...
 
 
 
-Programs often ask questions: yes-or-no and multiple choice. The user must select one of the given options, which I refer to as forcing a decision. Your goal as programmer is to pester the user to input a valid choice.
+Programs often ask questions: yes-or-no, this-or-that, or other multiple choice questions. The user must select one of the given options, which I refer here to as quote unquote forcing a decision. Your goal as programmer is to pester the user to input a valid choice und to make any other choices impossible. 
+
+So topic of today's session is "forcing a decision from user", Welcome to myCTalkthroughs.
 
 The easy and common way to resolve this pickle is to select a default option and, when the user is goofy, the default is selected.
 
-For example, Linux installation scripts offer the user a Yes or No (what I call a “yorn”) option. If the user types anything other than Y or sometimes Y-E-S, computer says, “Okay, you mean ‘no'” and proceeds. This approach doesn’t really force a decision; it presents a default.
+For example, Linux installation/deinstallation scripts offer the user a Yes or No option. If the user types anything other than Y or sometimes Y-E-S, computer says, “Okay, you mean ‘no'” and proceeds. This approach doesn’t really force a decision; it is build on a default.
 
-My approach for forcing a decision is to bury a switch-case structure within an endless while loop. A specific variable is required to ensure that the loop repeats until a correct choice is made. I consistently name this variable done because it makes the code read well:
-2022_07_30-Lesson.c
+My approach for forcing a decision though is to bury a switch-case structure within an endless while loop. A specific variable is required to ensure that the loop repeats until a correct choice is made. I consistently name this variable "done" because it makes the code very readable:
 
 #include <stdio.h>
 
 int main()
 {
-    const int true=1,false=0;
+    const int true = 1, false = 0;
     int ch,done;
 
     /* prepare for the loop */
@@ -77,18 +78,21 @@ int main()
     return(0);
 }
 
-Variable done is initially set to FALSE (zero). As the while loop’s condition is !done (“not done”), it translates to TRUE, so the loop repeats until the value of done becomes FALSE.
+To keep things straight forward I often create my own boolean values by setting up two constants true and false wich I assign 0 and 1 to.
+
+Variable done is initially set to FALSE (zero). As the while loop’s condition is exclamation mark done (“so not done”), it translates to TRUE, so the loop repeats until the value of done becomes FALSE.
 
 Within the while loop, switch-case statements filter possible correct responses. If any of the six valid choices are input, the code outputs a confirmation text message (or does something more interesting in real life) and the value of done becomes TRUE. The loop is done.
 
+Be aware of this here. Upper case and lower options in to consecutive cases work totally fine in C because all statements following any case are assumed falling through by default. So it doesn't matter if line 23 become true or line 24 is the triggeried option the programm continues at line 25 in that cases.   
+
 The default condition handles any invalid input. An error message is output, then an inner while loop churns through whatever text lingers in the stdin input buffer until a newline is encountered:
 
-while( getchar()!='\n' )
-    ;
+while( getchar()!='\n' );
 
-This statement gobbles the newline as well, which makes stream input behave in a familiar manner for the user.
+This statement gobbles the newline as well, which makes stream input behave in a familiar manner for the user. Please note that in case A, B, or C are triggered that stdin is NOT cleaned up and there may remain some leftovers from your input when your programm continues on line 47. If you want to avoid that you need to add another of that sdtin-cleaning lines to flush sdtin. For stdout and sandard error there is the flush() function available in C for stdin it does not work necessarily, while our little little while loop does the job without complaining. 
 
-Here’s a sample run:
+Let's try a sample run:
 
 You must choose A, B, or C: hello
 Invalid choice
@@ -98,4 +102,13 @@ You must choose A, B, or C: a
 Carrying out option A
 Thank you for behaving
 
-I wrote an Exercise years back that dealt with a similar situation, though only for “yorn” responses. It seems a bit clunky now that I look in the rearview mirror. The method presented in this post is far more elegant and can easily be adapted to any number of options for forcing a decision.
+In my opinion, the method presented in this video is kind of elegant and can easily be adapted to any number of options for forcing decisions. If you don't like to check for upper and lower case in the switch cases you could implement the same behavior with the functions toupper() or tolower() on your input, but I prefer to be aware of both cases when reading the code.
+
+
+
+
+
+
+
+
+

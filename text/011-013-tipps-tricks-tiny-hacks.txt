@@ -1,0 +1,194 @@
+Tipps & tricks and tiny hacks
+every C programmer needs to know
+
+Part III
+
+
+
+Pic: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hello, this is the first of so far three planned episodes of tips & tricks and little hacks that every C programmer should know. 
+
+Even if you may not use them yourself, you should be familiar with them when analyzing code you didn't write yourself to know what's going on.
+
+Let's start right away. Welcome to myCTalkThroughs
+
+[STRG-2]
+Tip number one is a macro to get the defined size of an array of any data type
+
+#include <stdio.h>
+
+#define SIZ_OF(x) (sizeof (x) / sizeof (*x))
+
+int main()
+{
+
+	int number[10] = {1,2,3,4,5,6};
+	char *teststr[10] = {"A","B","B","D","E","F","G","H","I"};
+
+	printf("Defined size of array \"number[10]\" is %d\n", ???(number));
+	printf("Defined size of array \"teststr[10]\" is %d\n", ???(teststr));
+
+	return(0);
+}
+
+The advantage of this macro is that you can use it within your program without the need of including a header file and that this macro works genericly for arrays of any data type.
+
+[STRG-1]
+
+As always, you can find a link to the code repository in the description of the video. Thanks for watching, please give a Thumbs up, hit the subscribe button and the bell. I hope to see you for the next episode of myCTalkthroughs. 
+
+
+
+
+
+
+
+Hello to the second episode of tips & tricks and little hacks that every C programmer should know. 
+
+Today we talk about a way to measure the execution time of your programm, more precisely, even a single function of your program.
+
+Welcome to myCTalkThroughs.
+
+So, have a look at this example [STRG-2]
+
+we get an execution time for this job, but first we do not know exactly what  and how is measured here, and second, let's assume that our main function is not the main function, but a subfunction doing some boring side job we need to measure the exact time for. 
+
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+clock_t startm, stopm;
+
+#define BEGIN if ( (startm = clock()) == -1) \
+{ \
+printf("clock returned error."); exit(1); \
+}
+
+#define STOP if ( (stopm = clock()) == -1) \
+{printf("clock returned error."); \
+exit(1); \
+}
+
+#define SHOWTIME printf( "%6.3f seconds elapsed.", ((double)stopm-startm)/CLOCKS_PER_SEC);
+
+int main() {
+     BEGIN;
+     
+		printf("Working.");
+		for (int i = 0; i < 1000000; i++) {
+		printf(".");
+		}
+		
+		STOP;
+		SHOWTIME;
+}
+
+
+
+
+
+
+
+
+
+Hello to the third episode of tips & tricks and tiny hacks that every C programmer should know about. 
+
+Today we talk about a very special combination of characters which on the first look seems to be an operator. The talk is of dash dash greater than. ww
+
+Welcome to myCTalkThroughs.
+
+In C programming, the symbol (–->) does not represent an operator.
+
+Instead, it is a combination of two separate operators, in particular double dash, so minus-minus -- and greater than >, and that combination is also known as “goes to.”
+
+To understand how this “goes to operator" works, we go through this code snippet.2
+
+[STRG-2]
+
+In the example, there is conditional’s code decrements variable x, while outputs x’s value, and in every iteration compares it with 0 using the greater than > operator.
+
+int main(){
+
+	int x = 10; 
+	while( x --> 0 ) // x goes to 0
+	{ 
+		printf("%d ", x);
+	}
+	printf("\n");
+}
+}
+
+[RUN]
+
+This a a very elegant way of avoid a long and complicated for loop and outputs us ten digits from 9 to zero. And it is so much shorter! Nice, or?
+
+[STRG-1]
+
+As always, you can find a link to the code repository in the description of this video. Thanks for watching, please give a Thumbs up, hit the subscribe button and the bell. See you for the next episode of myCTalkthroughs. 
+
+
+
+
+
+
+
+
+
+
+
+
+Tipps & tricks and tiny hacks 
+every C programmer needs to know                               Part III
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
