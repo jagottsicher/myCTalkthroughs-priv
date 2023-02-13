@@ -1,0 +1,81 @@
+Well folks, it's true that the C programming language may not have a built-in function for concatenating arrays of integers, but that's just because the language was developed by programmers who were extremly experienced with the beyboard and prefered to build all the tools in the C programming language to DIY everything.
+
+You see, with C, there's always a way to roll up your sleeves and build what you need yourself and of course, if you're a programmer, you're probably used to making things from scratch anyway! Just like a handyman who builds their own furniture, a programmer builds their own functions. So, when it comes to concatenating arrays of integers, grab your virtual hammer and saw, and let's get to work!
+
+#include <stdio.h>
+
+void concatenate(int arr1[], int arr2[], int n1, int n2, int result[]) {
+	int i, j;
+
+	for (i = 0; i < n1; i++)
+		result[i] = arr1[i];
+
+	for (j = 0; j < n2; j++)
+		result[i + j] = arr2[j];
+}
+
+int main() {
+	int arr1[] = {1, 2, 3};
+	int arr2[] = {4, 5, 6};
+
+	int n1 = sizeof(arr1) / sizeof(arr1[0]);
+	int n2 = sizeof(arr2) / sizeof(arr2[0]);
+
+	for (int i = 0; i < n1; i++)
+		printf("%d ", arr1[i]);
+	printf("\n");
+		for (int i = 0; i < n2; i++)
+		printf("%d ", arr2[i]);
+	printf("\n");
+
+	int result[n1 + n2];
+
+	concatenate(arr1, arr2, n1, n2, result);
+
+	printf("Concatenated array: ");
+	for (int i = 0; i < n1 + n2; i++)
+		printf("%d ", result[i]);
+	printf("\n");
+
+	return 0;
+}
+
+
+The code I wrote above is a simple, yet effective implementation of a function in the C programming language to concatenate two arrays of integers. The function, named concatenate, takes as input two arrays, arr1 and arr2, and their sizes, n1 and n2, and an array result which will be used to store the concatenated values.
+
+The implementation of the function is straightforward and well-structured. It first copies the elements of arr1 into result, using a for loop and the assignment operator. Then, it copies the elements of arr2 after them, again using a for loop. The use of i and j as loop variables ensures that the elements of both arrays are correctly copied into the result array.
+
+The main function provides a demonstration of how the concatenate function can be used. It creates two arrays of integers, arr1 and arr2, computes their sizes, creates a result array with enough space to hold both, and calls the concatenate function to combine the arrays. Finally, it uses another for loop to print the elements of the result array, to show the concatenated values.
+
+In conclusion, this code is a simple, straightforward example of how to concatenate two arrays of integers in C. While there may be more efficient or sophisticated ways to achieve this goal, this implementation is easy to understand and provides a solid foundation for writing your own functions in C. By understanding this code, you can gain a deeper understanding of how functions work in C and how to use them to solve real-world problems.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"Join us in this educational video as we explore the world of C programming and learn how to concatenate two arrays of integers. 
+
+In this episode of "myCTalkThroughs we will walk you through a clear and concise example, providing a step-by-step explanation of the code and its inner workings. Whether you are a beginner or an experienced programmer, this video is a valuable resource that will deepen your understanding of C and help you write your own concatenation functions. So sit back, grab a notebook and get ready to learn! This video is perfect for anyone looking to expand their programming skills and gain a deeper understanding of C."
+
+"Starting your programming journey? Check out our latest video on concatenating arrays in C on #myCTalkThroughs! Perfect for beginners & students 💻🚀 #CProgramming #LearnToCode #ProgrammingBasics"
+
+
+
