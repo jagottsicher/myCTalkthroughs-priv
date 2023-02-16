@@ -1,6 +1,14 @@
-Well folks, it's true that the C programming language may not have a built-in function for concatenating arrays of integers, but that's just because the language was developed by programmers who were extremly experienced with the beyboard and prefered to build all the tools in the C programming language to DIY everything.
+
+
+
+
+
+
+
+Well folks, it's true that the C programming language may not have a built-in function for concatenating arrays of integers, but that's just because the language was developed by programmers who were extremly experienced with the keyboard and prefered to buildin all the tools in the C programming language to DIY everything.
 
 You see, with C, there's always a way to roll up your sleeves and build what you need yourself and of course, if you're a programmer, you're probably used to making things from scratch anyway! Just like a handyman who builds their own furniture, a programmer builds their own functions. So, when it comes to concatenating arrays of integers, grab your virtual hammer and saw, and let's get to work!
+
 
 #include <stdio.h>
 
@@ -75,7 +83,27 @@ In conclusion, this code is a simple, straightforward example of how to concaten
 
 In this episode of "myCTalkThroughs we will walk you through a clear and concise example, providing a step-by-step explanation of the code and its inner workings. Whether you are a beginner or an experienced programmer, this video is a valuable resource that will deepen your understanding of C and help you write your own concatenation functions. So sit back, grab a notebook and get ready to learn! This video is perfect for anyone looking to expand their programming skills and gain a deeper understanding of C."
 
-"Starting your programming journey? Check out our latest video on concatenating arrays in C on #myCTalkThroughs! Perfect for beginners & students 💻🚀 #CProgramming #LearnToCode #ProgrammingBasics"
+Starting your programming journey? Check out our latest video on concatenating arrays in C on #myCTalkThroughs! Perfect for beginners & students 💻🚀 #CProgramming #LearnToCode #ProgrammingBasics https://youtu.be/aTB4qYPg09g @YouTube 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

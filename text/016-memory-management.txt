@@ -38,6 +38,8 @@ In this code, ptr is declared but never initialized, kind of like my love life. 
 
 Later on, ptr is freed, but the code still tries to write the number 6 to the memory location where ptr used to point, like a zombie trying to eat your brains even though it's already dead.
 
+Modern compilers may catch the errors though.
+
 To avoid memory issues, always make sure to initialize pointers before using them and to free memory when you're done with it. You can also use tools like valgrind or AddressSanitizer to catch these troublesome bugs before they wreak havoc on your code.
 
 To solve the memory management problem in the code example, you can initialize the pointer before dereferencing it, and ensure that the memory is freed after it's no longer needed. Here's an updated code example that does this:
